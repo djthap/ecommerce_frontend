@@ -1,0 +1,88 @@
+@import url(../libs/theme.css);
+
+.dashboard-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.create-extra-price-section,
+.extra-price-list-section {
+	margin-bottom: 30px;
+}
+
+.create-extra-price-form input[type='text'],
+.create-extra-price-form input[type='number'] {
+	width: calc(50% - 5px);
+	padding: 8px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.create-extra-price-form button {
+	/* width: calc(50% - 5px); */
+	padding: 8px 20px;
+	margin-left: 10px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--bg-highlightColor);
+	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	color: #fff;
+	cursor: pointer;
+}
+
+.create-extra-price-form button:hover {
+	background-color: #012202;
+}
+
+.extra-price-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.extra-price-item {
+	background-color: #f2f2f2;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	padding: 10px;
+	color: black;
+	transition: background-color 0.3s ease;
+}
+
+.extra-price-item > * {
+	/* margin-bottom: 5px; */
+}
+
+.extra-price-item span {
+	display: block;
+}
+
+.extra-price-item input[type='text'],
+.extra-price-item input[type='number'] {
+	/* width: calc(50% - 5px); */
+	padding: 5px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+}
+
+.extra-price-item button {
+	/* width: calc(50% - 5px); */
+	padding: 5px 10px;
+	margin-top: 5px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--bg-highlightColor);
+	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	color: white;
+	cursor: pointer;
+}
+
+.extra-price-item button:hover {
+	background-color: #d32f2f;
+}
+
+.extra-price-item:hover {
+	background-color: #eaeaea;
+}

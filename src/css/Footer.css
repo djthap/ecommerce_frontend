@@ -1,0 +1,34 @@
+@import url(../libs/theme.css);
+
+h3 {
+	color: #b98c64;
+}
+
+.footerinfo{
+	margin-top: 10px;
+	color:#ecdfd3;
+}
+
+.no-gutters {
+	--bs-gutter-x: 0;
+}
+.ll{
+	text-decoration: none;
+}
+#useful-link li{
+	list-style: none;
+	color: #ecdfd3;
+}
+.copyright-p{
+	color: #ecdfd3;
+}
+.mrr {
+	margin-right: 0;
+}
+
+.logo_bg {
+	background-color: var(--bg-highlightColor);
+	padding-right: 8px;
+	padding-left: 8px;
+	color: black;
+}

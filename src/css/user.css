@@ -1,0 +1,72 @@
+@import url(../libs/theme.css);
+
+.users-container {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.user-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.user-item {
+	cursor: pointer;
+	margin-bottom: 10px;
+	color: black;
+	padding: 15px;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-item:hover {
+	background-color: #e0e0e0;
+	transform: translateY(-5px);
+}
+
+.user-item.active {
+	background-color: var(--bg-highlightColor) !important;
+	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	color: #fff;
+}
+
+.user-details {
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	margin-top: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.user-details p {
+	margin: 10px 0;
+}
+
+.user-details select {
+	margin-top: 10px;
+	padding: 8px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+.user-details button {
+	margin-top: 20px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: var(--bg-highlightColor) !important;
+	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	color: #fff;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.user-details button:hover {
+	background-color: var(--bg-highlightColor) !important;
+	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}

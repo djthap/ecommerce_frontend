@@ -1,0 +1,149 @@
+@import url(../libs/theme.css);
+
+.product-layout-container {
+	display: flex;
+	margin-left: 200px;
+}
+
+/* Header image css */
+.home-container {
+	position: relative;
+	width: 100%;
+	height: 500px;
+	background-image: url('https://res.cloudinary.com/db4apiuz9/image/upload/v1710094780/li7oriluwk1yyavalu6o.jpg');
+	background-size: cover;
+	background-position: center;
+}
+.background-overlay::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	pointer-events: none;
+}
+
+.home-container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.248);
+}
+
+.home-container .order-now-button{
+	background-color: var(--bg-highlightColor);
+	color: white;
+	border: none;
+	padding: 8px 16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.home-container .order-now-button:hover{
+	background-color: #b98c64;
+	color: black;
+}
+
+.home-container .text-overlay {
+	position: absolute;
+	top: 45%;
+	left: 30%;
+	transform: translate(-50%, -50%);
+	z-index: 1;
+}
+
+.home-container .text-overlay h2 {
+	font-size: 50px;
+	color: #a37a56;
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.home-container .text-overlay h5 {
+	font-size: 20px;
+	color: #ecdfd3;
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+/* Heading css */
+.heading1 {
+	color: var(--bg-highlightColor);
+	margin-bottom: 20px;
+}
+
+.food-icons-container {
+	text-align: center;
+	padding-left: 130px;
+	margin-top: 40px;
+	margin-bottom: 40px;
+	padding-right: 130px;
+}
+
+.icon-row {
+	display: flex;
+	justify-content: space-around; /* Adjust spacing between icons */
+	flex-wrap: wrap;
+}
+
+.icon {
+	display: block;
+	margin: 0 auto;
+}
+
+.testimonials-container {
+	text-align: center;
+	padding: 50px 0;
+}
+
+.testimonial {
+	text-align: center;
+	margin-right: 50px;
+}
+.cat {
+	justify-content: space-between;
+	padding-left: 126px;
+	padding-right: 126px;
+}
+.client-avatar {
+	border-radius: 80%;
+}
+
+.testimonial-text {
+	font-style: italic;
+	margin-top: 50px;
+	font-size: 24px;
+	text-align: center;
+}
+
+.client-name {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: right;
+	margin-right: 10px;
+}
+.cat{
+	display: flex;
+}
+@media only screen and (max-width: 768px) {
+	.alignLeft {
+		padding-left: 7rem;
+	}
+	.terms {
+		display: block;
+		margin-left: 0px;
+	}
+	.product-layout-container {
+		display: block;
+		margin: 0%;
+	}
+	.cat {
+		display: block;
+		padding: 0%;
+	}
+}

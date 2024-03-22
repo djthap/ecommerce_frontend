@@ -1,0 +1,30 @@
+@import url(../libs/theme.css);
+
+.dashboard-container {
+	margin: 20px;
+}
+
+.management-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+.management-list li {
+	margin-bottom: 10px;
+}
+
+.management-list li a {
+	display: block;
+	padding: 10px;
+	background-color: var(--bg-highlightColor);
+	color: #ffffff;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+.management-list li a:hover {
+	background-color: #b98c64;
+	color: #fff;
+}

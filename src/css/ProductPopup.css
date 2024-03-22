@@ -1,0 +1,102 @@
+@import url(../libs/theme.css);
+
+:root {
+	--bg-highlightColor: #523a28;
+	--text-highlightColor: #000000;
+	--text-color: black;
+}
+
+.product-popup-container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgba(255, 255, 255, 1); /* White background */
+	border-radius: 10px;
+	padding: 20px;
+	max-width: 100%;
+	width: fit-content; /* Adjusts width based on content */
+	max-height: 90%;
+	overflow-y: auto; /* Enable scrolling if content exceeds container height */
+	z-index: 1000;
+}
+
+.product-popup-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between; /* Added to ensure space between image and details */
+}
+
+.product-popup-image-container {
+	margin-right: 20px;
+}
+
+.product-details {
+	flex: 1;
+	text-align: left;
+}
+
+.product-popup-name {
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--bg-highlightColor);
+	margin-bottom: 10px;
+	max-width: 80%; /* Limit name width to prevent overflow */
+	overflow-wrap: break-word; /* Wrap long names */
+}
+
+.product-popup-description {
+	margin-top: 10px;
+	color: var(--text-secondary-color);
+}
+
+.product-popup-category,
+.product-popup-price,
+.product-popup-sizes,
+.product-popup-toppings {
+	margin-top: 10px;
+	font-weight: bold;
+	color: var(--text-color);
+}
+
+.product-popup-size-list {
+	padding-left: 0px;
+}
+
+.product-popup-size-label{
+	display: flex;
+	justify-content: space-between;
+}
+.product-popup-toppings-list {
+	padding-left: 0px;
+}
+.product-popup-size-item,
+.product-popup-toppings-list li {
+	margin-bottom: 5px;
+	color: var(--text-color);
+	cursor: pointer;
+	
+}
+
+.product-popup-toppings-list li.selected {
+	background-color: var(--primary-color);
+	color: var(--bg-color);
+	border-radius: 5px;
+	padding: 0px 10px;
+}
+
+.add-to-cart-btn,
+.close-btn {
+	background-color: var(--primary-color);
+	color: var(--text-highlightColor); /* Changed to text highlight color */
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+}
+
+.add-to-cart-btn:hover,
+.close-btn:hover {
+	background-color: var(--primary-hover-color);
+}
+

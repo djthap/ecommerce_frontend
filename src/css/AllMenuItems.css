@@ -1,0 +1,53 @@
+@import url(../libs/theme.css);
+
+.all-menu-items {
+	margin: 0 auto;
+	padding: 20px;
+	max-width: 1200px; /* Adjust as needed */
+}
+
+.menu-item-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+
+.menu-item-card {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 10px;
+	background-color: #fff;
+}
+
+.menu-item-card img {
+	width: 100%;
+	border-radius: 5px;
+}
+
+.menu-item-card h3 {
+	/* font-weight: bold; */
+	font-size: 25px;
+	margin-top: 10px;
+}
+
+.menu-item-card p {
+	margin-top: 5px;
+}
+
+.menu-item-card .menu-item-actions {
+	margin-top: 10px;
+}
+
+.menu-item-card button {
+	background-color: var(--bg-highlightColor);
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	padding: 5px 10px;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.menu-item-card button:hover {
+	background-color: #0056b3;
+}
