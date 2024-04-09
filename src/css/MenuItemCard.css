@@ -1,12 +1,17 @@
-.custom-menu-item-card {
+@import url(../libs/theme.css);
+
+
+.menu-item-card {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	padding: 10px;
 	background-color: #fff;
 	margin: 10px;
 	position: relative;
-	height: 460px;
+	height: 390px;
+	width: 250px;
 }
+
 .ll {
 	background-color: var(--bg-highlightColor);
 	color: #fff;
@@ -17,43 +22,41 @@
 	cursor: pointer;
 	text-decoration: none;
 }
-.custom-button {
+.menu-button-plus{
 	text-decoration: none;
-	margin-top: 14px;
-	background-color: var(--bg-highlightColor);
+	background-color: var(--button-color);
 	color: #fff;
 	border: none;
-	border-radius: 5px;
+	border-radius: 100px;
 	padding: 5px 10px;
-	margin-right: 5px;
 	cursor: pointer;
 }
-
-.custom-menu-item-image {
+.menu-button-plus:hover{
+	background-color: var(--button-hover-color);
+}
+.menu-item-image {
 	width: 100%;
 	border-radius: 5px;
 }
 
-.custom-menu-item-title {
-	/* font-weight: bold; */
-	color: var(--bg-highlightColor);
+.menu-item-title {
+	color: var(--button-hover-color);
 	margin-top: 5px;
-	height: 60px;
+	height: 50px;
 }
-
-.custom-menu-item-description {
-	margin-top: 5px;
-	height: 130px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.custom-menu-item-price {
+.menu-item-price {
 	font-weight: bold;
-	margin-top: 5px;
 }
 
-.custom-bookmark {
+.menu-price-button {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 60px;
+	padding: 10px;
+}
+
+.category-name-bookmark {
 	position: absolute;
 	top: 10px;
 	right: 0px;
@@ -73,7 +76,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 1000; /* Ensure popup is above other content */
+	z-index: 1000;
 }
 
 .custom-popup {
@@ -81,19 +84,4 @@
 	padding: 20px;
 	border-radius: 5px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
-.custom-close-btn {
-	background-color: #007bff;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	margin-top: 10px;
-}
-
-.custom-close-btn:hover {
-	background-color: #0056b3;
 }

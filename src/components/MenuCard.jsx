@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import ProductPopup from './ProductPopup';
 
-function MenuCard({ menuItem }) {
+function MenuCard({ menuItem  ,loading , setloading}) {
     const [showPopup, setShowPopup] = useState(false);
 
     const togglePopup = () => {
@@ -20,8 +20,8 @@ function MenuCard({ menuItem }) {
     }
 
     return (
-        <div className="custom-menu-item-card ">
-            <div className="custom-bookmark">
+        <div className="menu-item-card ">
+            <div className="category-name-bookmark">
                 {menuItem?.category?.category_name || ''}
             </div>
 
@@ -30,30 +30,32 @@ function MenuCard({ menuItem }) {
                 alt={menuItem?.name || ''}
                 width={200}
                 height={250}
-                className="custom-menu-item-image"
+                className="menu-item-image"
             />
-            <h4 className="custom-menu-item-title">{menuItem?.name || ''}</h4>
-            
+            <h4 className="menu-item-title">{menuItem?.name || ''}</h4>
 
-            <p className="custom-menu-item-price">
-                Base Price: ${menuItem?.basePrice ?? ''}
-            </p>
+            <div className='menu-price-button'>
+                <p className="menu-item-price">
+                    Base Price: ${menuItem?.basePrice.toFixed(2) ?? ''}
+                </p>
 
-            <button className="custom-button" onClick={togglePopup}>
-                +
-            </button>
+                <button className="menu-button-plus" onClick={togglePopup}>
+                    +
+                </button>
+            </div>
+
 
             {showPopup && (
                 <div className="custom-popup-overlay">
                     <div className="custom-popup">
-                    <ProductPopup productId={menuItem._id} onClose={togglePopup} />
+                        <ProductPopup productId={menuItem._id}  loading={loading} setloading={setloading} onClose={togglePopup} />
                         <button className="custom-close-btn" onClick={togglePopup}>
                             Close
                         </button>
                     </div>
                 </div>
             )}
-            
+
         </div>
     );
 }

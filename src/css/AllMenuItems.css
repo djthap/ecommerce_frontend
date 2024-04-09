@@ -1,53 +1,93 @@
 @import url(../libs/theme.css);
 
-.all-menu-items {
+/*admin side menu items management*/
+.admin-all-menu-items {
 	margin: 0 auto;
 	padding: 20px;
-	max-width: 1200px; /* Adjust as needed */
+	max-width: 1200px;
 }
 
-.menu-item-list {
+.admin-all-menu-items h2{
+	color: var(--heading-text);
+}
+.admin-all-menu-items button{
+	background-color: var(--button-color);
+	color: #fff; 
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+	margin-bottom: 10px;
+}
+.admin-all-menu-items button:hover{
+	background-color: var(--button-hover-color);
+}
+.admin-menu-item-list {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 	gap: 20px;
 }
 
-.menu-item-card {
+.admin-menu-item-card {
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	padding: 10px;
 	background-color: #fff;
 }
 
-.menu-item-card img {
+.admin-menu-item-card img {
 	width: 100%;
 	border-radius: 5px;
+	margin-bottom: 5px;
 }
 
-.menu-item-card h3 {
-	/* font-weight: bold; */
+.admin-menu-item-card h3 {
+	color: var(--heading-text);
 	font-size: 25px;
-	margin-top: 10px;
+	margin-top: 5px;
+	height: 50px;
 }
 
-.menu-item-card p {
+.admin-menu-item-card p {
+	margin-top: -2px;
+}
+
+.admin-menu-description{
+	height: 120px;
+}
+.admin-menu-other-element{
+	height: 100px;
+}
+.admin-menu-item-card {
 	margin-top: 5px;
 }
 
-.menu-item-card .menu-item-actions {
-	margin-top: 10px;
-}
-
-.menu-item-card button {
-	background-color: var(--bg-highlightColor);
-	color: #fff;
+.admin-menu-item-card button{
+	background-color: var(--button-color);
+	color: #fff; 
 	border: none;
 	border-radius: 5px;
-	padding: 5px 10px;
-	margin-right: 5px;
+	padding: 10px 20px;
 	cursor: pointer;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.admin-menu-edit-button{
+	background-color: var(--button-color);
+	color: #fff; 
+	border: none;
+	border-radius: 5px;
+	padding: 10px 20px;
+	cursor: pointer;
+	margin-bottom: 10px;
+	text-decoration: none;
+	margin-right: 5px;
 }
 
-.menu-item-card button:hover {
-	background-color: #0056b3;
+.admin-menu-item-card button:hover {
+	background-color: rgb(186, 15, 15);
+}
+
+.admin-menu-edit-button:hover {
+	background-color: rgb(186, 15, 15);
 }

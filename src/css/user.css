@@ -6,6 +6,10 @@
 	padding: 20px;
 }
 
+.admin-user-list-heading{
+	color: var(--heading-text);
+}
+
 .user-list {
 	list-style-type: none;
 	padding: 0;
@@ -42,9 +46,16 @@
 	margin-top: 10px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.user-details h3{
+	color: #9c7252;
+}
 
 .user-details p {
 	margin: 10px 0;
+}
+
+.user-details p strong{
+	color: var(--heading-text);
 }
 
 .user-details select {
@@ -59,14 +70,11 @@
 	padding: 10px 20px;
 	border: none;
 	border-radius: 5px;
-	background-color: var(--bg-highlightColor) !important;
-	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	background-color: var(--button-color);
 	color: #fff;
 	cursor: pointer;
-	transition: background-color 0.3s;
 }
 
 .user-details button:hover {
-	background-color: var(--bg-highlightColor) !important;
-	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	background-color: var(--button-hover-color) ;
 }

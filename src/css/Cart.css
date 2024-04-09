@@ -1,3 +1,5 @@
+@import url(../libs/theme.css);
+
 .cart-container {
 	max-width: 800px;
 	margin: 0 auto;
@@ -5,20 +7,16 @@
 	background-color: #f9f9f9;
 }
 
-h2 {
+.cart-heading {
 	font-size: 24px;
 	margin-bottom: 20px;
-	color: black;
+	color: var(--heading-text);
 }
 
 .cart-items {
 	display: grid;
 	gap: 20px;
 	
-}
-.mr{
-    margin-left: 10px;
-    margin-right: 10px;
 }
 .cart-item {
 	width: 100%;
@@ -32,12 +30,12 @@ h2 {
 	color: black;
 }
 
-.item-info {
+.cart-item-info {
 	display: flex;
 	align-items: center;
 }
 
-.item-image {
+.cart-item-image {
 	width: 100px;
 	height: 100px;
 	margin-right: 20px;
@@ -45,24 +43,36 @@ h2 {
 	background-color: #f9f9f9;
 }
 
-.item-details h3 {
+.cart-item-details h3 {
 	font-size: 18px;
 	margin: 0;
 	color: black;
 }
 
-.item-details p {
+.cart-item-details p {
 	margin: 5px 0;
 	color: #666;
 }
 
-.button-container {
-	display: flex;
-	align-items: center;
+
+.mr {
+	background-color: var(--button-color);
+	color: #ffffff;
+	border: none;
+	padding: 8px 12px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	margin-left: 10px;
+    margin-right: 10px;
 }
 
-button {
-	background-color: #523a28;
+.mr:hover {
+	background-color: var(--button-hover-color);
+}
+
+.cart-remove-button {
+	background-color: var(--button-color);
 	color: #ffffff;
 	border: none;
 	padding: 8px 12px;
@@ -71,11 +81,16 @@ button {
 	transition: background-color 0.3s ease;
 }
 
-button:hover {
-	background-color: #3a2817;
+.cart-remove-button:hover {
+	background-color: var(--button-hover-color);
 }
 
 .empty-cart-message {
 	font-size: 18px;
 	color: black;
+}
+
+.text-right{
+	text-align: right;
+	font-weight: bold;
 }

@@ -47,24 +47,32 @@ function Category() {
 			toast.error('Failed to create category')
 		}
 	}
-
 	const handleDeleteCategory = async (categoryId) => {
 		try {
+			const confirmed = window.confirm("Are you sure you want to delete this category?");
+			if (!confirmed) {
+				return; // User cancelled the deletion
+			}
+	
 			const response = await fetch(`/api/categories/${categoryId}`, {
 				method: 'DELETE',
-			})
+			});
+			
 			if (!response.ok) {
-				throw new Error('Failed to delete category')
+				throw new Error('Failed to delete category');
 			}
+			
 			setCategories(
 				categories.filter((category) => category._id !== categoryId)
-			)
-			toast.success('Category deleted successfully')
+			);
+			
+			toast.success('Category deleted successfully');
 		} catch (error) {
-			console.error('Error deleting category:', error)
-			toast.error('Failed to delete category')
+			console.error('Error deleting category:', error);
+			toast.error('Failed to delete category');
 		}
-	}
+	};
+	
 
 	const handleEditCategory = (categoryId, categoryName) => {
 		setEditingCategoryId(categoryId)
@@ -110,7 +118,7 @@ function Category() {
 	return (
 		<div className="dashboard-container">
 			<div className="create-category-section">
-				<h2>Create New Category</h2>
+				<h2 className='admin-category-heading'>Create New Category</h2>
 				<div className="create-category-form">
 					<input
 						type="text"
@@ -123,7 +131,7 @@ function Category() {
 				</div>
 			</div>
 			<div className="category-list-section ">
-				<h2>All Categories</h2>
+				<h2 className='admin-category-heading'>All Categories</h2>
 				<div className="category-list">
 					{categories.map((category) => (
 						<div className="category-item" key={category._id}>

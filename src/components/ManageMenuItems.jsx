@@ -23,12 +23,12 @@ function ManageMenuItems() {
     };
 
     return (
-        <div className="all-menu-items">
+        <div className="admin-all-menu-items">
             <h2>All Menu Items</h2>
             <Link to="/createMenuItem">
                 <button>Create Menu Item</button>
             </Link>
-            <div className="menu-item-list">
+            <div className="admin-menu-item-list">
                 {menuItems.map(menuItem => (
                     <MenuItemCard key={menuItem._id} menuItem={menuItem} />
                 ))}

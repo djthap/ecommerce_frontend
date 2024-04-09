@@ -133,9 +133,9 @@ function CreateMenuItem() {
 	}
 
 	return (
-		<div className="container">
+		<div className="admin-create-menu-container">
 			<h2>Create Menu Item</h2>
-			<Form onSubmit={handleSubmit}>
+			<Form onSubmit={handleSubmit} className='admin-create-menu-form'>
 				<Form.Group className="mb-3">
 					<Form.Label>Image:</Form.Label>
 					<Form.Control

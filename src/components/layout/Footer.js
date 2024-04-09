@@ -13,7 +13,7 @@ export default function Footer() {
 						alt={'logo'}
 						className=""
 					/>
-					<p className='footerinfo'>
+					<p className='footer-info'>
 						ByteBrust: Where flavor meets convenience. Explore,
 						order, and indulge with ease on our website.
 					</p>
@@ -42,14 +42,14 @@ export default function Footer() {
 					</div>
 				</div>
 				<div className="col-md-4 col-12">
-					<h3 className="text-xl font-semibold mb-4">USEFUL LINKS</h3>
+					<h3 className="text-xl font-semibold mb-4 footer-heading">USEFUL LINKS</h3>
 					<div className="row no-gutters pt-4 ">
 						<ul className="col-md-6 col-12" id='useful-link'>
-							<li><Link to={"/AdminLogin"} className='ll'>Admin Login</Link></li>
-							<li>About</li>
-							<li>Menu</li>
+							<li><Link to={"/AdminLogin"} className='footer-link'>Admin Login</Link></li>
+							<li><Link to={"/aboutUs"} className='footer-link'>About</Link></li>
+							<li><Link to={"/menu"} className='footer-link'>Menu</Link></li>
 							<li>Testimonials</li>
-							<li>Contact Us</li>
+							<li><Link to={"/ContactUs"} className='footer-link'>Contact Us</Link></li>
 						</ul>
 						<ul className="col-md-6 col-12" id='useful-link'>
 							<li>Wishlist</li>
@@ -60,7 +60,7 @@ export default function Footer() {
 					</div>
 				</div>
 				<div className="col-md-4 col-12">
-					<h3 className="text-xl font-weight-bold mb-4">
+					<h3 className="text-xl font-weight-bold mb-4 footer-heading">
 						INSTAGRAM FEED
 					</h3>
 					<div className="row row-cols-3 g-2 mrr">

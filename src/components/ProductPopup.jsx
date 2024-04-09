@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import '../css/ProductPopup.css'
 
-function ProductPopup({ productId, onClose }) {
+function ProductPopup({ productId, onClose, loading, setloading }) {
 	const [product, setProduct] = useState(null)
 	const [selectedSize, setSelectedSize] = useState(null)
 	const [selectedToppings, setSelectedToppings] = useState([])
@@ -25,34 +25,42 @@ function ProductPopup({ productId, onClose }) {
 
 	const handleAddToCart = () => {
 		if (!selectedSize) {
-			toast.error('Please select a size.')
-			return
+			toast.error('Please select a size.');
+			return;
 		}
-
-		let totalPrice = product.basePrice + selectedSize.price
+	
+		let totalPrice = product.basePrice + selectedSize.price;
 		selectedToppings.forEach((topping) => {
-			totalPrice += topping.price
-		})
-
+			totalPrice += topping.price;
+		});
+	
 		const cartItem = {
 			product: product,
 			selectedSize: selectedSize,
 			selectedToppings: selectedToppings,
 			totalPrice: totalPrice,
 			quantity: quantity,
+		};
+	
+		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || [];
+		// Check if the product already exists in the cart
+		const existingProductIndex = existingCart.findIndex(item => item.product.id === product.id);
+		if (existingProductIndex !== -1) {
+			// If the product exists, update its quantity
+			existingCart[existingProductIndex].quantity += quantity;
+			setloading(cartItem);
+		} else {
+			// If the product doesn't exist, add it to the cart
+			existingCart.push(cartItem);
+			setloading(cartItem.quantity);
 		}
-
-		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || []
-		existingCart.push(cartItem)
-		sessionStorage.setItem('cart', JSON.stringify(existingCart))
-
+	
+		sessionStorage.setItem('cart', JSON.stringify(existingCart));
+		
 		toast.success(
-			`Added ${product.name} to cart. Total price: $${totalPrice.toFixed(
-				2
-			)}`
-		)
-	}
-
+			`Added ${product.name} to cart. Total price: $${totalPrice.toFixed(2)}`
+		);
+	};
 	const handleSizeSelection = (size) => {
 		setSelectedSize(size)
 	}
@@ -88,7 +96,17 @@ function ProductPopup({ productId, onClose }) {
 						/>
 					</div>
 					<div className="product-details">
-						<h2 className="product-popup-name">{product.name}</h2>
+						<div className="product-name-and-close-button">
+							<h2 className="product-popup-name">
+								{product.name}
+							</h2>
+							<button
+								className="close-popup-button"
+								onClick={onClose}
+							>
+								X
+							</button>
+						</div>
 						<p className="product-popup-price">
 							${product.basePrice.toFixed(2)}
 						</p>
@@ -115,23 +133,14 @@ function ProductPopup({ productId, onClose }) {
 													className="product-popup-size-label"
 												>
 													{size.name}
-
 													<input
-														type="radio"
-														id={`size-${index}`}
-														name="size"
-														value={size.name}
-														onChange={() =>
-															handleSizeSelection(
-																size
-															)
-														}
-														checked={
-															selectedSize &&
-															selectedSize.name ===
-																size.name
-														}
-													/>
+    type="radio"
+    id={`size-${index}`}
+    name="size"
+    value={size.name}
+    onChange={() => handleSizeSelection(size)}
+    checked={selectedSize === size} // Compare the whole object
+/>
 												</label>
 												<span className="size-price">
 													+${size.price.toFixed(2)}
@@ -162,6 +171,7 @@ function ProductPopup({ productId, onClose }) {
 																? 'selected'
 																: ''
 														}
+														topping-li
 													>
 														<label
 															htmlFor={`ingredient-${index}`}
@@ -219,13 +229,10 @@ function ProductPopup({ productId, onClose }) {
 								</button>
 							</div>
 							<button
-								className="custom-button"
+								className="add-to-cart-popup-button"
 								onClick={handleAddToCart}
 							>
 								Add to Cart
-							</button>
-							<button className="custom-button" onClick={onClose}>
-								X
 							</button>
 						</div>
 					</div>

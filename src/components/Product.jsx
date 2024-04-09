@@ -124,7 +124,9 @@ function Product() {
                                                     />
 
                                                 </label>
-                                                <span className="size-price">+${size.price.toFixed(2)}</span>
+                                                <span className="size-price">
+                                                    +${size.price.toFixed(2)}
+                                                </span>
                                                 <hr />
                                             </li>
 

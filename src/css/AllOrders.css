@@ -1,0 +1,33 @@
+@import url(../libs/theme.css);
+.orders-container {
+	margin: 20px;
+}
+.orders-container h1{
+	color: var(--heading-text);
+}
+.orders-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.orders-table th,
+.orders-table td {
+	border: 1px solid #ddd;
+	padding: 8px;
+	text-align: left;
+}
+
+.orders-table th {
+	background-color: #f2f2f2;
+}
+.pending-bg {
+    background-color: #ffc107; /* Yellow for pending */
+}
+
+.ready-bg {
+    background-color: #28a745; /* Green for ready to deliver */
+}
+
+.delivered-bg {
+    background-color: #007bff; /* Blue for delivered */
+}

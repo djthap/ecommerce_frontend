@@ -124,9 +124,9 @@ function EditMenuItem() {
     };
 
     return (
-        <div className="container">
+        <div className="admin-create-menu-container">
             <h2>Edit Menu Item</h2>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className='admin-create-menu-form'>
                 <Form.Group className="mb-3">
                     <Form.Label>Image:</Form.Label>
                     <Form.Control
@@ -221,7 +221,7 @@ function EditMenuItem() {
                 </Form.Group>
 
                 <Button type="submit">Update</Button>
-                <Link to="/manageMenuitem">Back to Manage Menu Items</Link>
+                <Link to="/manageMenuitem" className='back-to-admin-menu-list-button'>Back to Manage Menu Items</Link>
             </Form>
         </div>
     );

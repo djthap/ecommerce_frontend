@@ -5,6 +5,9 @@
 	margin: 0 auto;
 	padding: 20px;
 }
+.admin-category-heading{
+	color: var(--heading-text);
+}
 
 .create-category-section,
 .category-list-section {
@@ -23,14 +26,13 @@
 	padding: 10px 20px;
 	border: none;
 	border-radius: 5px;
-	background-color: var(--bg-highlightColor);
-	border-color: rgb(209 213 219 / var(--tw-border-opacity));
+	background-color: var(--button-color);
 	color: #fff;
 	cursor: pointer;
 }
 
 .create-category-form button:hover {
-	background-color: #012202;
+	background-color: var(--button-hover-color);
 }
 
 .category-list {
@@ -58,7 +60,9 @@
 	font-size: 16px;
 	font-weight: bold;
 }
-
+.category-item span {
+	color: var(--heading-text);
+}
 .category-item button {
 	background-color: var(--bg-highlightColor);
 	border-color: rgb(209 213 219 / var(--tw-border-opacity));

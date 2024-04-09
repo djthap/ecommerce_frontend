@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../css/user.css';
-import { toast } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Users() {
@@ -57,6 +57,7 @@ function Users() {
                 throw new Error('Failed to update role');
             }
             setSelectedUser({ ...selectedUser, role: newRole });
+            fetchUsers();
             toast.success('Role updated successfully');
         } catch (error) {
             console.error('Error updating role:', error);
@@ -66,7 +67,8 @@ function Users() {
 
     return (
         <div className="users-container">
-            <h2>List of Users</h2>
+            <ToastContainer/>
+            <h2 className='admin-user-list-heading'>List of Users</h2>
             <ul className="user-list">
                 {users.map((user) => (
                     <li

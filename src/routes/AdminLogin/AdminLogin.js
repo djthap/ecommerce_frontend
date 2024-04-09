@@ -1,9 +1,9 @@
 import React from 'react'
 import AdminLoginPage from '../../components/AdminLoginPage'
 
-function AdminLogin() {
+function AdminLogin({loading,setloading}) {
   return (
-    <div><AdminLoginPage/></div>
+    <div><AdminLoginPage loading={loading} setloading={setloading}/></div>
   )
 }
 

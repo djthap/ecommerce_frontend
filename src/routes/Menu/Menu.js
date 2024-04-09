@@ -1,9 +1,9 @@
 import React from 'react'
 import MenuList from '../../components/MenuList'
 
-function Menu() {
+function Menu({loading,setloading}) {
   return (
-    <div><MenuList/></div>
+    <div><MenuList  loading={loading} setloading={setloading} /></div>
   )
 }
 
