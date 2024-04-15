@@ -47,7 +47,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || [];
 		// Check if the product already exists in the cart
 		const existingProductIndex = existingCart.findIndex(item => item.product._id === product._id);
-	
+	setloading(existingCart[existingProductIndex].quantity += quantity)
 		if (existingProductIndex !== -1) {
 			// If the product exists, update its quantity
 			existingCart[existingProductIndex].quantity += quantity;
