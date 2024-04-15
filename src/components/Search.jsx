@@ -36,39 +36,36 @@ function Search() {
 	}, [searchQuery])
 
 	return (
-		<Form className="d-flex mf position-relative">
-			<Form.Control
-				type="search"
-				placeholder="Search by name"
-				className="me-2"
-				aria-label="Search"
-				value={searchQuery}
-				onChange={handleSearchInputChange}
-			/>
+		<div className="d-flex mf position-relative ">
+    <input
+        type="search"
+        placeholder="Search by name"
+        className="me-2"
+        aria-label="Search"
+        value={searchQuery}
+        onChange={handleSearchInputChange}
+    />
 
-			<div className="search-results-container">
-				<div className="search-results-dropdown">
-					{searchResults.map((item) => (
-						
-							<Link to={`/viewitem/${item._id}`} 	className="search-result-item d-flex"
-							key={item._id} >
-							<img
-								src={item.image}
-								alt={item.name}
-								width={50}
-								height={50}
-								/>
-							<div  className='text'>
-								<p>{item.name}</p>
-								<p>Price: {item.basePrice}</p>
-								
-							</div>
-								</Link>
-						
-					))}
-				</div>
-			</div>
-		</Form>
+    <div className="search-results-container">
+        <div className="search-results-dropdown">
+            {searchResults.map((item) => (
+                <Link to={`/viewitem/${item._id}`} className="search-result-item d-flex" key={item._id}>
+                    <img
+                        src={item.image}
+                        alt={item.name}
+                        width={50}
+                        height={50}
+                    />
+                    <div className='text'>
+                        <p>{item.name}</p>
+                        <p>Price: {item.basePrice}</p>
+                    </div>
+                </Link>
+            ))}
+        </div>
+    </div>
+</div>
+
 	)
 }
 
