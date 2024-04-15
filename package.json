@@ -2,7 +2,7 @@
   "name": "biteburst",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5002",
+  "proxy": "https://ecommerce-backend-1-cl9h.onrender.com",
   "dependencies": {
     "@stripe/stripe-js": "^3.3.0",
     "@testing-library/jest-dom": "^5.17.0",
