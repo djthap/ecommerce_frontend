@@ -17,7 +17,6 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 	}, [productId])
 
 	useEffect(() => {
-		// Set selectedSize to the first available size when product changes
 		if (product && product.sizes && product.sizes.length > 0) {
 			setSelectedSize(product.sizes[0])
 		}
@@ -34,6 +33,9 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 			totalPrice += topping.price;
 		});
 	
+		// Update individual base price of the product
+		product.basePrice = totalPrice;
+	
 		const cartItem = {
 			product: product,
 			selectedSize: selectedSize,
@@ -44,23 +46,24 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 	
 		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || [];
 		// Check if the product already exists in the cart
-		const existingProductIndex = existingCart.findIndex(item => item.product.id === product.id);
+		const existingProductIndex = existingCart.findIndex(item => item.product._id === product._id);
+	
 		if (existingProductIndex !== -1) {
 			// If the product exists, update its quantity
 			existingCart[existingProductIndex].quantity += quantity;
-			setloading(cartItem);
 		} else {
 			// If the product doesn't exist, add it to the cart
 			existingCart.push(cartItem);
-			setloading(cartItem.quantity);
 		}
 	
+		// Update sessionStorage with the updated cart
 		sessionStorage.setItem('cart', JSON.stringify(existingCart));
-		
+	
 		toast.success(
 			`Added ${product.name} to cart. Total price: $${totalPrice.toFixed(2)}`
 		);
 	};
+	
 	const handleSizeSelection = (size) => {
 		setSelectedSize(size)
 	}

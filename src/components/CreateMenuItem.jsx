@@ -131,6 +131,8 @@ function CreateMenuItem() {
 			console.error('Error creating menu item:', error)
 		}
 	}
+	const sizeExtras = extraPrices.filter(extraPrice => extraPrice.display === "Size");
+    const ItemExtras = extraPrices.filter(extraPrice => extraPrice.display === "Ingredient");
 
 	return (
 		<div className="admin-create-menu-container">
@@ -196,7 +198,7 @@ function CreateMenuItem() {
 					<Form.Label>Sizes:</Form.Label>
 					<MultiSelect
 						
-						options={extraPrices.map((extraPrice) => ({
+						options={sizeExtras.map((extraPrice) => ({
 							label: `Name : ${extraPrice.name}    ||  Price :  ${extraPrice.price}`,
 							value: extraPrice._id,
 						}))}
@@ -213,7 +215,7 @@ function CreateMenuItem() {
 					<MultiSelect
 						style={{ color: 'black' }}
 						className="ddddd text-black"
-						options={extraPrices.map((extraPrice) => ({
+						options={ItemExtras.map((extraPrice) => ({
 							label: `Name : ${extraPrice.name}    ||  Price :  ${extraPrice.price}`,
 							value: extraPrice._id,
 						}))}

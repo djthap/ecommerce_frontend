@@ -26,6 +26,9 @@ import Checkout from './routes/Checkout/Checkout'
 import AllOrders from './routes/orders/AllOrders'
 import ProfilePage from './routes/Profile/ProfilePage'
 import MyOrders from './routes/orders/MyOrders'
+import Restaurants from './routes/restaurants/Restaurants'
+import Success from './routes/Payment Pages/Success'
+import Cancel from './routes/Payment Pages/Cancel'
 
 function App() {
 	const [loading, setloading] = useState(false)
@@ -33,8 +36,16 @@ function App() {
 	return (
 		<div className="App">
 			<Routes>
-				<Route path="/" element={<Layout loading={loading}
-							setloading={setloading} element={<Home />} />} />
+				<Route
+					path="/"
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Home />}
+						/>
+					}
+				/>
 				<Route
 					path="/Login"
 					element={
@@ -67,102 +78,255 @@ function App() {
 				/>
 				<Route
 					path="/SignUp"
-					element={<Layout loading={loading}
-					setloading={setloading}  element={<Register />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Register />}
+						/>
+					}
+				/>
+				<Route
+					path="/restaurants"
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Restaurants />}
+						/>
+					}
 				/>
 				<Route
 					path="/Cart"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<Cart loading={loading}
-					setloading={setloading} />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={
+								<Cart
+									loading={loading}
+									setloading={setloading}
+								/>
+							}
+						/>
+					}
 				/>
 				<Route
 					path="/aboutUs"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<AboutUs />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<AboutUs />}
+						/>
+					}
 				/>
 				<Route
 					path="/orders"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<AllOrders />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<AllOrders />}
+						/>
+					}
 				/>
 				<Route
 					path="/Myorders"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<MyOrders />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<MyOrders />}
+						/>
+					}
 				/>
 				<Route
 					path="/adminDashboard"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<Dashboard />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Dashboard />}
+						/>
+					}
 				/>
 				<Route
 					path="/profile"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ProfilePage />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ProfilePage />}
+						/>
+					}
 				/>
 				<Route
 					path="/manageUsers"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<Users />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Users />}
+						/>
+					}
 				/>
 				<Route
 					path="/manageCategory"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ManageCategory />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ManageCategory />}
+						/>
+					}
 				/>
 				<Route
 					path="/Checkout"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<Checkout loading={loading}
-					setloading={setloading} />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={
+								<Checkout
+									loading={loading}
+									setloading={setloading}
+								/>
+							}
+						/>
+					}
 				/>
 				<Route
 					path="/menu"
-					element={<Layout  loading={loading}
-					setloading={setloading}  element={<Menu 	loading={loading}
-					setloading={setloading}/>} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={
+								<Menu
+									loading={loading}
+									setloading={setloading}
+								/>
+							}
+						/>
+					}
+				/>
+				<Route
+					path="/menu/:Restaurant"
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={
+								<Menu
+									loading={loading}
+									setloading={setloading}
+								/>
+							}
+						/>
+					}
 				/>
 				<Route
 					path="/createMenuitem"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<CreateMenuItem />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<CreateMenuItem />}
+						/>
+					}
 				/>
 				<Route
 					path="/editMenuitem/:id"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<EditMenuItem />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<EditMenuItem />}
+						/>
+					}
 				/>
 				<Route
 					path="/viewitem/:id"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ViewProduct/>} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ViewProduct loading={loading}
+							setloading={setloading} />}
+						/>
+					}
 				/>
 				<Route
 					path="/contactUs"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ContactUs/>} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ContactUs />}
+						/>
+					}
 				/>
 				<Route
 					path="/manageMenuitem"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ManageMenuItem />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ManageMenuItem />}
+						/>
+					}
 				/>
 				<Route
 					path="/ManageExtraPrice"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<ManageExtraPrice/> } />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<ManageExtraPrice />}
+						/>
+					}
+				/>
+				<Route
+					path="/orders/success"
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Success />}
+						/>
+					}
+				/>
+				<Route
+					path="/orders/cancel"
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<Cancel />}
+						/>
+					}
 				/>
 				<Route
 					path="/AllMenuItems"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<AllMenuItems/> } />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<AllMenuItems />}
+						/>
+					}
 				/>
 
 				<Route
 					path="*"
-					element={<Layout loading={loading}
-					setloading={setloading} element={<PageNotFound />} />}
+					element={
+						<Layout
+							loading={loading}
+							setloading={setloading}
+							element={<PageNotFound />}
+						/>
+					}
 				/>
 			</Routes>
 		</div>

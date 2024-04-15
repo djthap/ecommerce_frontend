@@ -40,9 +40,9 @@ function ExtraPrice() {
 		})
 	}
 
-	const handleEdit = (id, name, price ,display) => {
+	const handleEdit = (id, name, price, display) => {
 		setEditingId(id)
-		setEditingData({ name, price ,display})
+		setEditingData({ name, price, display })
 	}
 
 	const handleEditSubmit = async (id) => {
@@ -65,25 +65,27 @@ function ExtraPrice() {
 	}
 
 	const handleDelete = async (id) => {
-    try {
-        const confirmDelete = window.confirm("Are you sure you want to delete this extra price?");
-        if (!confirmDelete) {
-            return; // If user cancels deletion, exit function
-        }
+		try {
+			const confirmDelete = window.confirm(
+				'Are you sure you want to delete this extra price?'
+			)
+			if (!confirmDelete) {
+				return // If user cancels deletion, exit function
+			}
 
-        const response = await fetch(`/api/extraPrice/${id}`, {
-            method: 'DELETE',
-        });
-        if (!response.ok) {
-            throw new Error('Failed to delete extra price');
-        }
-        setExtraPrices(
-            extraPrices.filter((extraPrice) => extraPrice._id !== id)
-        );
-    } catch (error) {
-        console.error('Error deleting extra price:', error);
-    }
-};
+			const response = await fetch(`/api/extraPrice/${id}`, {
+				method: 'DELETE',
+			})
+			if (!response.ok) {
+				throw new Error('Failed to delete extra price')
+			}
+			setExtraPrices(
+				extraPrices.filter((extraPrice) => extraPrice._id !== id)
+			)
+		} catch (error) {
+			console.error('Error deleting extra price:', error)
+		}
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
@@ -127,7 +129,11 @@ function ExtraPrice() {
 						onChange={handleChange}
 						placeholder="Price"
 					/>
-					<select value={formData.display} onChange={handleChange}>
+					<select
+						className="ss"
+						value={formData.display}
+						onChange={handleChange}
+					>
 						<option value="Ingredient">Ingredient</option>
 						<option value="Size">Size</option>
 					</select>
@@ -162,6 +168,7 @@ function ExtraPrice() {
 										}
 									/>
 									<select
+										className="ss"
 										value={editingData.display}
 										onChange={(e) =>
 											setEditingData({
@@ -192,7 +199,7 @@ function ExtraPrice() {
 											handleEdit(
 												extraPrice._id,
 												extraPrice.name,
-                        extraPrice.price,
+												extraPrice.price,
 												extraPrice.display
 											)
 										}

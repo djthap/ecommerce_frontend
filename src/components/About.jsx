@@ -39,7 +39,7 @@ export default function About() {
 					<div className="col-md-3 col-12">
 						<div className="picturebox">
 							<img
-								src={'/vruti.JPG'}
+								src={'/vruti.jpg'}
 								width={165}
 								height={166}
 								alt={'logo'}
@@ -63,7 +63,7 @@ export default function About() {
 					<div className="col-md-3 col-12">
 						<div className="picturebox">
 							<img
-								src={'/kk.JPG'}
+								src={'/kk.jpg'}
 								width={165}
 								height={166}
 								alt={'logo'}

@@ -67,8 +67,8 @@ export default function Header({ loading, setloading }) {
 						</Nav.Link>
 						
 					
-						<Nav.Link href="/menu" className="space">
-							MENU
+						<Nav.Link href="/restaurants" className="space">
+							RESTAURANTS
 						</Nav.Link>
 						<Nav.Link href="/aboutUs" className="space">
 							ABOUT

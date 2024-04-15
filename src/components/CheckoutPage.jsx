@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation ,useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
+
+import { loadStripe } from '@stripe/stripe-js';
 import 'react-toastify/dist/ReactToastify.css'
 import '../css/CheckoutPage.css'
 
 function CheckoutPage({loading,setloading}) {
+	const navigate = useNavigate()
+	
 	const [shippingInfo, setShippingInfo] = useState({
 		phoneNumber: '',
 		address: '',
 		cardHolderName: '',
 		cardNumber: '',
+		email:"",
 		cvv: '',
 		expiryDate: '',
 	})
 	const [cartItems, setCartItems] = useState([])
-	const [paymentMethod, setPaymentMethod] = useState('card') // Default to card payment
-
-	// Validation flags
-	const [cardNumberError, setCardNumberError] = useState('')
-	const [cvvError, setCVVError] = useState('')
-	const [expiryDateError, setExpiryDateError] = useState('')
-
+	const [paymentMethod, setPaymentMethod] = useState('pickup'); 
+  
 	useEffect(() => {
 		const storedCart = JSON.parse(sessionStorage.getItem('cart')) || []
 		setCartItems(storedCart)
+		redirect()
 	}, [])
+	const redirect =()=>{
 
+		if (!sessionStorage.getItem('token')) {
+			return navigate('/login', { replace: true })
+		}
+	}
 	const handleRemoveFromCart = (index) => {
 		const updatedCart = [...cartItems]
 		updatedCart.splice(index, 1)
@@ -48,93 +54,76 @@ function CheckoutPage({loading,setloading}) {
 		const { name, value } = e.target
 		setShippingInfo({ ...shippingInfo, [name]: value })
 
-		// Clear previous errors when user starts typing
-		if (name === 'cardNumber') setCardNumberError('')
-		if (name === 'cvv') setCVVError('')
-		if (name === 'expiryDate') setExpiryDateError('')
+		
 	}
-
+	const makePayment = async () => {
+        const stripe = await loadStripe("pk_test_51P0TTMFCUOELksMnK6njO4OglZ1mU339uPGGLTedpRptmfPpONsuue2TFTdA6vdlGst0WWZGoxmsUaU679A0xHAB000LIeto2d");
+        const body = {
+            products: cartItems
+        };
+        const headers = {
+            "Content-Type": "application/json",
+        };
+        const response = await fetch('/api/orderRoutes/create-checkout-session/', {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(body)
+        });
+        const session = await response.json();
+        console.log(session);
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id
+        });
+    };
 	const handleSubmit = async (e) => {
-		e.preventDefault()
+        e.preventDefault();
 
-		// Validate card information
-		const validCardNumber = validateCardNumber(shippingInfo.cardNumber)
-		const validCVV = validateCVV(shippingInfo.cvv)
-		const validExpiryDate = validateExpiryDate(shippingInfo.expiryDate)
+        try {
+            if (paymentMethod === 'pickup') {
+                // Place order logic for pickup
+                const response = await fetch('/api/orderRoutes/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `${sessionStorage.getItem('token')}`,
+                    },
+                    body: JSON.stringify({
+                        phoneNumber: shippingInfo.phoneNumber,
+						email: shippingInfo.email,
+                        cardHolderName: shippingInfo.cardHolderName,
+                        address: shippingInfo.address,
+                        items: cartItems.map((item) => item.product._id),
+                        totalPrice: totalPrice,
+                    }),
+                });
 
-		if (!validCardNumber) {
-			setCardNumberError('Please enter a valid card number')
-			return
-		}
-		if (!validCVV) {
-			setCVVError('Please enter a valid CVV')
-			return
-		}
-		if (!validExpiryDate) {
-			setExpiryDateError('Please enter a valid expiry date')
-			return
-		}
+                if (!response.ok) {
+                    throw new Error('Failed to place order');
+                }
 
-		// Continue with submission if all validations pass
-		try {
-			const response = await fetch('/api/orderRoutes/', {
-				method: 'POST',
-				headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `${sessionStorage.getItem('token')}`,
-                },
-				body: JSON.stringify({
-					phoneNumber: shippingInfo.phoneNumber,
-					address: shippingInfo.address,
-					cardHolderName: shippingInfo.cardHolderName,
-					cardNumber: shippingInfo.cardNumber,
-					cvv: shippingInfo.cvv,
-					expiryDate: shippingInfo.expiryDate,
-					items: cartItems.map((item) => item.product._id),
-					totalPrice: totalPrice,
-				}),
-			})
+                console.log('order placed successfully');
+                setCartItems([]);
+                setloading("0");
+                setShippingInfo({
+                    phoneNumber: '',
+                    address: '',
+                });
+                sessionStorage.removeItem('cart');
+                toast.success('Order placed successfully');
+            } else if (paymentMethod === 'online') {
+                // Save details with product in session
+                sessionStorage.setItem('pendingCheckout', JSON.stringify({ shippingInfo, cartItems }));
 
-			if (!response.ok) {
-				throw new Error('Failed to place order')
-			}
-			console.log('order placed successfully')
-			setCartItems([])
-			setCVVError("")
-			setExpiryDateError("")
-			setCardNumberError("")
-			setloading("0")
-			setShippingInfo({
-				phoneNumber: '',
-				address: '',
-				cardHolderName: '',
-				cardNumber: '',
-				cvv: '',
-				expiryDate: '',
-			})
-			sessionStorage.removeItem('cart')
-			toast.success('Order placed successfully')
-		} catch (error) {
-			console.error('Error placing order:', error)
-			toast.error('Failed to place order')
-		}
-	}
+                // Run makePayment function
+                await makePayment();
+            }
+        } catch (error) {
+            console.error('Error placing order:', error);
+            toast.error('Failed to place order');
+        }
+    };
 
-	// Validation functions
-	function validateCardNumber(cardNumber) {
-		// Simple check for now (16 digits)
-		return /^\d{16}$/.test(cardNumber)
-	}
-
-	function validateCVV(cvv) {
-		// Simple check for now (3 or 4 digits)
-		return /^\d{3}$/.test(cvv)
-	}
-
-	function validateExpiryDate(expiryDate) {
-		// Simple check for now (MM/YY format)
-		return /^\d{2}\/\d{4}$/.test(expiryDate)
-	}
+	
 
 	return (
 		<div>
@@ -226,7 +215,15 @@ function CheckoutPage({loading,setloading}) {
 							<h2 className="checkout-sub-heading">
 								Shipping Address
 							</h2>
-
+							<input
+                                        type="text"
+                                        name="cardHolderName"
+                                        placeholder=" Name"
+                                        value={shippingInfo.cardHolderName}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                  
 							<input
 								type="text"
 								name="phoneNumber"
@@ -237,6 +234,14 @@ function CheckoutPage({loading,setloading}) {
 								maxLength={10}
 								required
 							/>
+							 <input
+                                type="email"
+                                name="email"
+                                placeholder="Email"
+                                value={shippingInfo.email}
+                                onChange={handleChange}
+                                required
+                            />
 							<input
 								type="text"
 								name="address"
@@ -246,49 +251,32 @@ function CheckoutPage({loading,setloading}) {
 								required
 							/>
 
-							<h2 className="checkout-sub-heading">
-								Card Details
-							</h2>
-							<div className="error-message">
-								{cardNumberError}
-							</div>
-							<input
-								type="text"
-								name="cardHolderName"
-								placeholder="Card Holder Name"
-								value={shippingInfo.cardHolderName}
-								onChange={handleChange}
-								required
-							/>
-							<input
-								type="text"
-								name="cardNumber"
-								placeholder="Card Number"
-								value={shippingInfo.cardNumber}
-								onChange={handleChange}
-								required
-							/>
-							<div className="error-message">{cvvError}</div>
-							<input
-								type="text"
-								name="cvv"
-								placeholder="123"
-								value={shippingInfo.cvv}
-								onChange={handleChange}
-								required
-							/>
-							<div className="error-message">
-								{expiryDateError}
-							</div>
-							<input
-								type="text"
-								name="expiryDate"
-								placeholder="MM/YYYY"
-								value={shippingInfo.expiryDate}
-								onChange={handleChange}
-								required
-							/>
-
+                                   
+                               
+<div>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="paymentMethod"
+                                        value="pickup"
+                                        checked={paymentMethod === 'pickup'}
+                                        onChange={() => setPaymentMethod('pickup')}
+                                    />
+                                    Pick up
+                                </label>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="paymentMethod"
+                                        value="online"
+                                        checked={paymentMethod === 'online'}
+                                        onChange={() => setPaymentMethod('online')}
+                                    />
+                                    Online
+                                </label>
+                            </div>
+							
+						
 							<button
 								type="submit"
 								className="place-order-button"

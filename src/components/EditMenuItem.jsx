@@ -122,7 +122,10 @@ function EditMenuItem() {
             console.error('Error updating menu item:', error);
         }
     };
+    const sizeExtras = extraPrices.filter(extraPrice => extraPrice.display === "Size");
+    const ItemExtras = extraPrices.filter(extraPrice => extraPrice.display === "Ingredient");
 
+    
     return (
         <div className="admin-create-menu-container">
             <h2>Edit Menu Item</h2>
@@ -195,7 +198,7 @@ function EditMenuItem() {
                 <Form.Group className="mb-3">
                     <Form.Label>Sizes:</Form.Label>
                     <MultiSelect
-                        options={extraPrices.map((extraPrice) => ({
+                        options={sizeExtras.map((extraPrice) => ({
                             label: `${extraPrice.name} - ${extraPrice.price}`,
                             value: extraPrice._id,
                         }))}
@@ -209,7 +212,7 @@ function EditMenuItem() {
                 <Form.Group className="mb-3">
                     <Form.Label>Extra Ingredient Prices:</Form.Label>
                     <MultiSelect
-                        options={extraPrices.map((extraPrice) => ({
+                        options={ItemExtras.map((extraPrice) => ({
                             label: `${extraPrice.name} - ${extraPrice.price}`,
                             value: extraPrice._id,
                         }))}

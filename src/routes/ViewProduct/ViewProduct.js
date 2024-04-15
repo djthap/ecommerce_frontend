@@ -1,10 +1,11 @@
 import React from 'react'
 import Product from '../../components/Product'
 
-export default function ViewProduct() {
+export default function ViewProduct({loading,setloading}) {
   return (
     <div>
-    <Product/>
+    <Product loading={loading}
+							setloading={setloading}/>
     </div>
   )
 }
