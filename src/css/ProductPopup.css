@@ -130,4 +130,11 @@
 }
 
 
-
+@media (max-width: 768px) {
+.product-popup-content{
+display: block;
+}
+.product-popup-image-container {
+    margin-right: 0px;
+}
+}

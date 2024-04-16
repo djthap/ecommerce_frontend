@@ -53,6 +53,7 @@
 @media (max-width: 768px) {
 	.all-menu-items22 {
 		flex-direction: column;
+		padding-left: 51px;
 	}
 
 	.category-list {

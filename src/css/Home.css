@@ -133,6 +133,19 @@
 	.alignLeft {
 		padding-left: 7rem;
 	}
+	.text-overlay h2{
+		width: 264px!important;
+		font-size: 24px!important;
+		padding-left: 65px;
+	}
+	.text-overlay h5{
+		width: 350px;
+		font-size: 16px;
+		padding-left: 65px;
+	}
+	.cat{
+		padding-left: 25px;
+	}
 	.terms {
 		display: block;
 		margin-left: 0px;
@@ -143,6 +156,9 @@
 	}
 	.cat {
 		display: block;
-		padding: 0%;
+	
+	}
+	.product-item{
+		margin-left: 34px;
 	}
 }

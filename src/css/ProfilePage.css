@@ -80,3 +80,15 @@
 	color: #f0f0f0;
 	background-color: #523a28;
 }
+@media only screen and (max-width: 768px) {
+	
+.profile-form{
+	display: block;
+}
+.profile-details>div{
+	margin-top: 71px;
+}
+.profile-image-container{
+	display: contents;
+}
+}

@@ -83,4 +83,8 @@
 	.mf {
 		display: block !important;
 	}
+	.badge{
+		right: 146px;
+    top: 7px;
+	}
 }
