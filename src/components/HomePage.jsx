@@ -60,7 +60,7 @@ export default function HomePage() {
 						</div>
 						<div className="col-1 text-center">
 							<img
-								src={'/BurgerIcon.png'}
+								src={'/burgerIcon.png'}
 								width={70}
 								height={70}
 								alt={'burgericon'}
