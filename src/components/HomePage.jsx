@@ -12,7 +12,11 @@ export default function HomePage() {
 	const fetchTopThreeProducts = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/top3'
+                
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/top3',{headers:{
+                    "Accept": "*",
+                    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
+                },method:"GET",mode:"cors",credentials:"include",cache:"default",redirect:"follow",referrer:"client"}
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch top three products')
