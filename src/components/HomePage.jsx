@@ -15,6 +15,9 @@ export default function HomePage() {
                 
 				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/top3',{headers:{
                     "Accept": "*",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+                    "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"
                 },method:"GET",mode:"cors",credentials:"include",cache:"default",redirect:"follow",referrer:"client"}
 			)
