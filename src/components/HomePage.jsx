@@ -11,7 +11,7 @@ export default function HomePage() {
 
     const fetchTopThreeProducts = async () => {
         try {
-            const response = await fetch('/api/menuItem/top3');
+            const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/top3');
             if (!response.ok) {
                 throw new Error('Failed to fetch top three products');
             }
@@ -47,7 +47,7 @@ export default function HomePage() {
                         </div>
                         <div className="col-1 text-center">
                             <img
-                                src={'/burgerIcon.png'}
+                                src={'/BurgerIcon.png'}
                                 width={70}
                                 height={70}
                                 alt={'burgericon'}

@@ -21,7 +21,7 @@ function ExtraPrice() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch('/api/extraPrice')
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice')
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -47,7 +47,7 @@ function ExtraPrice() {
 
 	const handleEditSubmit = async (id) => {
 		try {
-			const response = await fetch(`/api/extraPrice/${id}`, {
+			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice/${id}`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ function ExtraPrice() {
 				return // If user cancels deletion, exit function
 			}
 
-			const response = await fetch(`/api/extraPrice/${id}`, {
+			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice/${id}`, {
 				method: 'DELETE',
 			})
 			if (!response.ok) {
@@ -90,7 +90,7 @@ function ExtraPrice() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await fetch('/api/extraPrice', {
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

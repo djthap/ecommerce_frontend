@@ -12,7 +12,7 @@ export default function ContactUsPage() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			await axios.post('/api/contactUsRoutes/send-email', {
+			await axios.post('https://ecommerce-backend-1-cl9h.onrender.com/api/contactUsRoutes/send-email', {
 				name,
 				email,
 				message,

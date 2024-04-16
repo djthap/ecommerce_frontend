@@ -20,7 +20,7 @@ export default function SignUp() {
           return;
       }
 
-      const response = await fetch('/api/auth/register', {
+      const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/auth/register', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',

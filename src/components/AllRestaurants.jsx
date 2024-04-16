@@ -8,7 +8,7 @@ export default function AllRestaurants() {
   useEffect(() => {
     const fetchRestaurantUsers = async () => {
       try {
-        const response = await fetch('/api/auth/restaurants');
+        const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/auth/restaurants');
         if (!response.ok) {
           throw new Error('Failed to fetch restaurant users');
         }

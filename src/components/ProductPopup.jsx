@@ -10,7 +10,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 	const [quantity, setQuantity] = useState(1)
 
 	useEffect(() => {
-		fetch(`/api/menuItem/${productId}`)
+		fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/${productId}`)
 			.then((response) => response.json())
 			.then((data) => setProduct(data))
 			.catch((error) => console.error('Error fetching product:', error))
@@ -47,7 +47,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || [];
 		// Check if the product already exists in the cart
 		const existingProductIndex = existingCart.findIndex(item => item.product._id === product._id);
-	setloading(existingCart[existingProductIndex].quantity += quantity)
+	
 		if (existingProductIndex !== -1) {
 			// If the product exists, update its quantity
 			existingCart[existingProductIndex].quantity += quantity;
@@ -55,7 +55,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 			// If the product doesn't exist, add it to the cart
 			existingCart.push(cartItem);
 		}
-	
+		setloading(quantity)
 		// Update sessionStorage with the updated cart
 		sessionStorage.setItem('cart', JSON.stringify(existingCart));
 	

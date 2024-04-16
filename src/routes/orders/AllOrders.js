@@ -14,7 +14,7 @@ function AllOrders() {
 
 	const fetchOrders = async () => {
 		try {
-			const response = await fetch('/api/orderRoutes')
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes')
 			if (!response.ok) {
 				throw new Error('Failed to fetch orders')
 			}
@@ -30,7 +30,7 @@ function AllOrders() {
 
 	const updateOrderStatus = async (orderId, status) => {
 		try {
-			const response = await fetch(`/api/orderRoutes/${orderId}/status`, {
+			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/${orderId}/status`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

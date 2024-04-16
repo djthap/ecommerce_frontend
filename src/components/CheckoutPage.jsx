@@ -64,7 +64,7 @@ function CheckoutPage({loading,setloading}) {
         const headers = {
             "Content-Type": "application/json",
         };
-        const response = await fetch('/api/orderRoutes/create-checkout-session/', {
+        const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/create-checkout-session/', {
             method: "POST",
             headers: headers,
             body: JSON.stringify(body)
@@ -81,7 +81,7 @@ function CheckoutPage({loading,setloading}) {
         try {
             if (paymentMethod === 'pickup') {
                 // Place order logic for pickup
-                const response = await fetch('/api/orderRoutes/', {
+                const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

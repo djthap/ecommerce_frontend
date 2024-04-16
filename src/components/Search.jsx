@@ -14,7 +14,7 @@ function Search() {
 		const fetchSearchResults = async () => {
 			try {
 				const response = await fetch(
-					`/api/menuItem/search?name=${searchQuery}`
+					`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/search?name=${searchQuery}`
 				)
 				if (!response.ok) {
 					throw new Error('Failed to fetch search results')
@@ -36,7 +36,7 @@ function Search() {
 	}, [searchQuery])
 
 	return (
-		<div className="d-flex mf position-relative ">
+		<div className="d-flex mf position-relative">
     <input
         type="search"
         placeholder="Search by name"

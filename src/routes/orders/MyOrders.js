@@ -18,7 +18,7 @@ function MyOrders() {
             if (!userId) {
                 throw new Error('User ID not found in session');
             }
-            const response = await fetch(`/api/orderRoutes/userOrders/${userId}`);
+            const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/userOrders/${userId}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch orders');
             }
@@ -34,7 +34,7 @@ function MyOrders() {
 
 	const updateOrderStatus = async (orderId, status) => {
 		try {
-			const response = await fetch(`/api/orderRoutes/${orderId}/status`, {
+			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/${orderId}/status`, {
 				method: 'PUT',
 				headers: {
 					'Content-Type': 'application/json',

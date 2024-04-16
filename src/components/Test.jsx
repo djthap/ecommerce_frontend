@@ -37,7 +37,7 @@ function Test({ loading, setloading }) {
         const headers = {
             "Content-Type": "application/json",
         };
-        const response = await fetch('/api/orderRoutes/create-checkout-session/', {
+        const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/create-checkout-session/', {
             method: "POST",
             headers: headers,
             body: JSON.stringify(body)

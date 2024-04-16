@@ -20,7 +20,7 @@ function AdminLoginPage({ loading, setloading }) {
 		ev.preventDefault()
 		setLoginInProgress(true)
 		try {
-			const response = await fetch('/api/auth/admin/login', {
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/auth/admin/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

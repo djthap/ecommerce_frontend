@@ -27,7 +27,7 @@ function CreateMenuItem() {
 
 	const fetchCategories = async () => {
 		try {
-			const response = await fetch('/api/categories')
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories')
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
 			}
@@ -40,7 +40,7 @@ function CreateMenuItem() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch('/api/extraPrice')
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice')
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -66,7 +66,7 @@ function CreateMenuItem() {
 			const formData = new FormData()
 			formData.append('image', file)
 
-			const response = await fetch('/api/menuItem/uploadImage', {
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/uploadImage', {
 				method: 'POST',
 				body: formData,
 			})
@@ -104,7 +104,7 @@ function CreateMenuItem() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await fetch('/api/menuItem', {
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

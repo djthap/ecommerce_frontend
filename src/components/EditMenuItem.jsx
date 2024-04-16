@@ -32,7 +32,7 @@ function EditMenuItem() {
 
     const fetchMenuItem = async () => {
         try {
-            const response = await fetch(`/api/menuItem/${id}`);
+            const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/${id}`);
             if (!response.ok) {
                 throw new Error('Failed to fetch menu item');
             }
@@ -47,7 +47,7 @@ function EditMenuItem() {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('/api/categories');
+            const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories');
             if (!response.ok) {
                 throw new Error('Failed to fetch categories');
             }
@@ -60,7 +60,7 @@ function EditMenuItem() {
 
     const fetchExtraPrices = async () => {
         try {
-            const response = await fetch('/api/extraPrice');
+            const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice');
             if (!response.ok) {
                 throw new Error('Failed to fetch extra prices');
             }
@@ -103,7 +103,7 @@ function EditMenuItem() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`/api/menuItem/${id}`, {
+            const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

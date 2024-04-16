@@ -58,7 +58,7 @@ const Success = () => {
     const handleSubmit = async () => {
         try {
             sessionStorage.removeItem('cart');
-            const response = await fetch('/api/orderRoutes/', {
+            const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

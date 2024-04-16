@@ -15,7 +15,7 @@ function Category() {
 
 	const fetchCategories = async () => {
 		try {
-			const response = await fetch('/api/categories')
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories')
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
 			}
@@ -28,7 +28,7 @@ function Category() {
 
 	const handleCreateCategory = async () => {
 		try {
-			const response = await fetch('/api/categories', {
+			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ function Category() {
 				return; // User cancelled the deletion
 			}
 	
-			const response = await fetch(`/api/categories/${categoryId}`, {
+			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/categories/${categoryId}`, {
 				method: 'DELETE',
 			});
 			
@@ -82,7 +82,7 @@ function Category() {
 	const handleUpdateCategory = async () => {
 		try {
 			const response = await fetch(
-				`/api/categories/${editingCategoryId}`,
+				`https://ecommerce-backend-1-cl9h.onrender.com/api/categories/${editingCategoryId}`,
 				{
 					method: 'PUT',
 					headers: {
