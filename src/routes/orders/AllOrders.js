@@ -14,7 +14,9 @@ function AllOrders() {
 
 	const fetchOrders = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes')
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes'
+			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch orders')
 			}
@@ -30,14 +32,17 @@ function AllOrders() {
 
 	const updateOrderStatus = async (orderId, status) => {
 		try {
-			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/${orderId}/status`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `${sessionStorage.getItem('token')}`,
-				},
-				body: JSON.stringify({ status }),
-			})
+			const response = await fetch(
+				`https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/${orderId}/status`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `${sessionStorage.getItem('token')}`,
+					},
+					body: JSON.stringify({ status }),
+				}
+			)
 			if (!response.ok) {
 				throw new Error('Failed to update order status')
 			}

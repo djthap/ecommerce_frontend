@@ -15,7 +15,9 @@ function Category() {
 
 	const fetchCategories = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories')
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/categories'
+			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
 			}
@@ -28,13 +30,16 @@ function Category() {
 
 	const handleCreateCategory = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ category_name: newCategoryName }),
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/categories',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ category_name: newCategoryName }),
+				}
+			)
 			if (!response.ok) {
 				throw new Error('Failed to create category')
 			}
@@ -49,30 +54,34 @@ function Category() {
 	}
 	const handleDeleteCategory = async (categoryId) => {
 		try {
-			const confirmed = window.confirm("Are you sure you want to delete this category?");
+			const confirmed = window.confirm(
+				'Are you sure you want to delete this category?'
+			)
 			if (!confirmed) {
-				return; // User cancelled the deletion
+				return // User cancelled the deletion
 			}
-	
-			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/categories/${categoryId}`, {
-				method: 'DELETE',
-			});
-			
+
+			const response = await fetch(
+				`https://ecommercebackend-production-8c9e.up.railway.app/api/categories/${categoryId}`,
+				{
+					method: 'DELETE',
+				}
+			)
+
 			if (!response.ok) {
-				throw new Error('Failed to delete category');
+				throw new Error('Failed to delete category')
 			}
-			
+
 			setCategories(
 				categories.filter((category) => category._id !== categoryId)
-			);
-			
-			toast.success('Category deleted successfully');
+			)
+
+			toast.success('Category deleted successfully')
 		} catch (error) {
-			console.error('Error deleting category:', error);
-			toast.error('Failed to delete category');
+			console.error('Error deleting category:', error)
+			toast.error('Failed to delete category')
 		}
-	};
-	
+	}
 
 	const handleEditCategory = (categoryId, categoryName) => {
 		setEditingCategoryId(categoryId)
@@ -82,7 +91,7 @@ function Category() {
 	const handleUpdateCategory = async () => {
 		try {
 			const response = await fetch(
-				`https://ecommerce-backend-1-cl9h.onrender.com/api/categories/${editingCategoryId}`,
+				`https://ecommercebackend-production-8c9e.up.railway.app/api/categories/${editingCategoryId}`,
 				{
 					method: 'PUT',
 					headers: {
@@ -118,7 +127,7 @@ function Category() {
 	return (
 		<div className="dashboard-container">
 			<div className="create-category-section">
-				<h2 className='admin-category-heading'>Create New Category</h2>
+				<h2 className="admin-category-heading">Create New Category</h2>
 				<div className="create-category-form">
 					<input
 						type="text"
@@ -131,7 +140,7 @@ function Category() {
 				</div>
 			</div>
 			<div className="category-list-section ">
-				<h2 className='admin-category-heading'>All Categories</h2>
+				<h2 className="admin-category-heading">All Categories</h2>
 				<div className="category-list">
 					{categories.map((category) => (
 						<div className="category-item" key={category._id}>

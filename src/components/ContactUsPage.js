@@ -12,11 +12,14 @@ export default function ContactUsPage() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			await axios.post('https://ecommerce-backend-1-cl9h.onrender.com/api/contactUsRoutes/send-email', {
-				name,
-				email,
-				message,
-			})
+			await axios.post(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/contactUsRoutes/send-email',
+				{
+					name,
+					email,
+					message,
+				}
+			)
 			toast.success('Email sent successfully!')
 			// Reset form fields
 			setName('')

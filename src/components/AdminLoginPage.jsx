@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
-import {  useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import '../css/admin_login.css'
@@ -8,8 +8,7 @@ import '../css/admin_login.css'
 function AdminLoginPage({ loading, setloading }) {
 	const navigate = useNavigate()
 	useEffect(() => {
-		
-		redirect();
+		redirect()
 	}, [])
 	const fetch = require('isomorphic-fetch')
 	const [email, setEmail] = useState('')
@@ -20,13 +19,16 @@ function AdminLoginPage({ loading, setloading }) {
 		ev.preventDefault()
 		setLoginInProgress(true)
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/auth/admin/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ email, password }),
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/admin/login',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ email, password }),
+				}
+			)
 
 			const data = await response.json()
 
@@ -47,13 +49,11 @@ function AdminLoginPage({ loading, setloading }) {
 		setLoginInProgress(false)
 	}
 
-
-
-const redirect =()=>{
-	if (sessionStorage.getItem('token')) {
-		return navigate('/', { replace: true })
+	const redirect = () => {
+		if (sessionStorage.getItem('token')) {
+			return navigate('/', { replace: true })
+		}
 	}
-}
 	return (
 		<section className="mt-8">
 			<ToastContainer />

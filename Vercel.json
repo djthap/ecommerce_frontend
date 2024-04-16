@@ -2,11 +2,11 @@
     "rewrites": [
       {
         "source": "/api/:path*",
-        "destination": "https://ecommerce-backend-1-cl9h.onrender.com/:path*"
+        "destination": "https://ecommercebackend-production-8c9e.up.railway.app/:path*"
       },
       {
         "source": "/api/:path*/",
-        "destination": "https://ecommerce-backend-1-cl9h.onrender.com/:path*/"
+        "destination": "https://ecommercebackend-production-8c9e.up.railway.app/:path*/"
       }
     ]
   }

@@ -21,7 +21,9 @@ function ExtraPrice() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice')
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice'
+			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -47,13 +49,16 @@ function ExtraPrice() {
 
 	const handleEditSubmit = async (id) => {
 		try {
-			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice/${id}`, {
-				method: 'PUT',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(editingData),
-			})
+			const response = await fetch(
+				`https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice/${id}`,
+				{
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(editingData),
+				}
+			)
 			if (!response.ok) {
 				throw new Error('Failed to update extra price')
 			}
@@ -73,9 +78,12 @@ function ExtraPrice() {
 				return // If user cancels deletion, exit function
 			}
 
-			const response = await fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice/${id}`, {
-				method: 'DELETE',
-			})
+			const response = await fetch(
+				`https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice/${id}`,
+				{
+					method: 'DELETE',
+				}
+			)
 			if (!response.ok) {
 				throw new Error('Failed to delete extra price')
 			}
@@ -90,13 +98,16 @@ function ExtraPrice() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify(formData),
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(formData),
+				}
+			)
 			if (!response.ok) {
 				throw new Error('Failed to create extra price')
 			}

@@ -49,7 +49,7 @@ const ProfilePage = () => {
 		if (Object.keys(validationErrors).length === 0) {
 			try {
 				const response = await fetch(
-					`https://ecommerce-backend-1-cl9h.onrender.com/api/auth/updateProfile/${user._id}`,
+					`https://ecommercebackend-production-8c9e.up.railway.app/api/auth/updateProfile/${user._id}`,
 					{
 						method: 'PUT',
 						headers: {
@@ -65,7 +65,7 @@ const ProfilePage = () => {
 
 				console.log('User profile updated:', user)
 				toast.success('User profile updated successfully')
-        sessionStorage.setItem('user', JSON.stringify(user));
+				sessionStorage.setItem('user', JSON.stringify(user))
 			} catch (error) {
 				console.error('Error updating user profile:', error)
 			}
@@ -99,10 +99,13 @@ const ProfilePage = () => {
 			const formData = new FormData()
 			formData.append('image', file)
 
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/uploadImage', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/uploadImage',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error('Failed to upload image')

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -12,10 +12,9 @@ function LoginPage({ setRedirectTo, loading, setloading }) {
 	const [loginInProgress, setLoginInProgress] = useState(false)
 	const [error, setError] = useState('')
 	useEffect(() => {
-		
-		redirect();
+		redirect()
 	}, [])
-	const redirect =()=>{
+	const redirect = () => {
 		if (sessionStorage.getItem('token')) {
 			return navigate('/', { replace: true })
 		}
@@ -24,13 +23,16 @@ function LoginPage({ setRedirectTo, loading, setloading }) {
 		ev.preventDefault()
 		setLoginInProgress(true)
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/auth/login', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ email, password }),
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/login',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify({ email, password }),
+				}
+			)
 
 			const data = await response.json()
 
@@ -49,8 +51,6 @@ function LoginPage({ setRedirectTo, loading, setloading }) {
 		}
 		setLoginInProgress(false)
 	}
-
-	
 
 	// Check if already logged in
 	if (sessionStorage.getItem('token')) {

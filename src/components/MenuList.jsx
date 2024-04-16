@@ -14,9 +14,10 @@ function MenuList({ loading, setloading, restaurant }) {
 
 	const fetchMenuItems = async (categoryId = '') => {
 		try {
-			let url = 'https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem'
+			let url =
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem'
 			if (categoryId) {
-				url = `https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/category/${categoryId}`
+				url = `https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/category/${categoryId}`
 			}
 			const response = await fetch(url)
 			if (!response.ok) {

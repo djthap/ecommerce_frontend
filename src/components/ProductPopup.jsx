@@ -10,7 +10,9 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 	const [quantity, setQuantity] = useState(1)
 
 	useEffect(() => {
-		fetch(`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/${productId}`)
+		fetch(
+			`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/${productId}`
+		)
 			.then((response) => response.json())
 			.then((data) => setProduct(data))
 			.catch((error) => console.error('Error fetching product:', error))
@@ -24,46 +26,50 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 
 	const handleAddToCart = () => {
 		if (!selectedSize) {
-			toast.error('Please select a size.');
-			return;
+			toast.error('Please select a size.')
+			return
 		}
-	
-		let totalPrice = product.basePrice + selectedSize.price;
+
+		let totalPrice = product.basePrice + selectedSize.price
 		selectedToppings.forEach((topping) => {
-			totalPrice += topping.price;
-		});
-	
+			totalPrice += topping.price
+		})
+
 		// Update individual base price of the product
-		product.basePrice = totalPrice;
-	
+		product.basePrice = totalPrice
+
 		const cartItem = {
 			product: product,
 			selectedSize: selectedSize,
 			selectedToppings: selectedToppings,
 			totalPrice: totalPrice,
 			quantity: quantity,
-		};
-	
-		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || [];
+		}
+
+		const existingCart = JSON.parse(sessionStorage.getItem('cart')) || []
 		// Check if the product already exists in the cart
-		const existingProductIndex = existingCart.findIndex(item => item.product._id === product._id);
-	
+		const existingProductIndex = existingCart.findIndex(
+			(item) => item.product._id === product._id
+		)
+
 		if (existingProductIndex !== -1) {
 			// If the product exists, update its quantity
-			existingCart[existingProductIndex].quantity += quantity;
+			existingCart[existingProductIndex].quantity += quantity
 		} else {
 			// If the product doesn't exist, add it to the cart
-			existingCart.push(cartItem);
+			existingCart.push(cartItem)
 		}
 		setloading(quantity)
 		// Update sessionStorage with the updated cart
-		sessionStorage.setItem('cart', JSON.stringify(existingCart));
-	
+		sessionStorage.setItem('cart', JSON.stringify(existingCart))
+
 		toast.success(
-			`Added ${product.name} to cart. Total price: $${totalPrice.toFixed(2)}`
-		);
-	};
-	
+			`Added ${product.name} to cart. Total price: $${totalPrice.toFixed(
+				2
+			)}`
+		)
+	}
+
 	const handleSizeSelection = (size) => {
 		setSelectedSize(size)
 	}
@@ -137,13 +143,20 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 												>
 													{size.name}
 													<input
-    type="radio"
-    id={`size-${index}`}
-    name="size"
-    value={size.name}
-    onChange={() => handleSizeSelection(size)}
-    checked={selectedSize === size} // Compare the whole object
-/>
+														type="radio"
+														id={`size-${index}`}
+														name="size"
+														value={size.name}
+														onChange={() =>
+															handleSizeSelection(
+																size
+															)
+														}
+														checked={
+															selectedSize ===
+															size
+														} // Compare the whole object
+													/>
 												</label>
 												<span className="size-price">
 													+${size.price.toFixed(2)}

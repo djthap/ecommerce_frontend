@@ -14,7 +14,7 @@ function Search() {
 		const fetchSearchResults = async () => {
 			try {
 				const response = await fetch(
-					`https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/search?name=${searchQuery}`
+					`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/search?name=${searchQuery}`
 				)
 				if (!response.ok) {
 					throw new Error('Failed to fetch search results')
@@ -37,35 +37,38 @@ function Search() {
 
 	return (
 		<div className="d-flex mf position-relative">
-    <input
-        type="search"
-        placeholder="Search by name"
-        className="me-2"
-        aria-label="Search"
-        value={searchQuery}
-        onChange={handleSearchInputChange}
-    />
+			<input
+				type="search"
+				placeholder="Search by name"
+				className="me-2"
+				aria-label="Search"
+				value={searchQuery}
+				onChange={handleSearchInputChange}
+			/>
 
-    <div className="search-results-container">
-        <div className="search-results-dropdown">
-            {searchResults.map((item) => (
-                <Link to={`/viewitem/${item._id}`} className="search-result-item d-flex" key={item._id}>
-                    <img
-                        src={item.image}
-                        alt={item.name}
-                        width={50}
-                        height={50}
-                    />
-                    <div className='text'>
-                        <p>{item.name}</p>
-                        <p>Price: {item.basePrice}</p>
-                    </div>
-                </Link>
-            ))}
-        </div>
-    </div>
-</div>
-
+			<div className="search-results-container">
+				<div className="search-results-dropdown">
+					{searchResults.map((item) => (
+						<Link
+							to={`/viewitem/${item._id}`}
+							className="search-result-item d-flex"
+							key={item._id}
+						>
+							<img
+								src={item.image}
+								alt={item.name}
+								width={50}
+								height={50}
+							/>
+							<div className="text">
+								<p>{item.name}</p>
+								<p>Price: {item.basePrice}</p>
+							</div>
+						</Link>
+					))}
+				</div>
+			</div>
+		</div>
 	)
 }
 

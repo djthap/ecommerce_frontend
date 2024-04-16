@@ -13,7 +13,6 @@ function CreateMenuItem() {
 		sizes: [],
 		extraIngredientPrices: [],
 	})
-	
 
 	const [categories, setCategories] = useState([])
 	const [extraPrices, setExtraPrices] = useState([])
@@ -27,7 +26,9 @@ function CreateMenuItem() {
 
 	const fetchCategories = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/categories')
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/categories'
+			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
 			}
@@ -40,7 +41,9 @@ function CreateMenuItem() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/extraPrice')
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice'
+			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -66,10 +69,13 @@ function CreateMenuItem() {
 			const formData = new FormData()
 			formData.append('image', file)
 
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem/uploadImage', {
-				method: 'POST',
-				body: formData,
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/uploadImage',
+				{
+					method: 'POST',
+					body: formData,
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error('Failed to upload image')
@@ -104,14 +110,17 @@ function CreateMenuItem() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/menuItem', {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					Authorization: `${sessionStorage.getItem('token')}`,
-				},
-				body: JSON.stringify(formData),
-			})
+			const response = await fetch(
+				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem',
+				{
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `${sessionStorage.getItem('token')}`,
+					},
+					body: JSON.stringify(formData),
+				}
+			)
 
 			if (!response.ok) {
 				throw new Error('Failed to create menu item')
@@ -119,25 +128,31 @@ function CreateMenuItem() {
 
 			const data = await response.json()
 			alert('Created successfully')
-			setFormData({image: '',
-			name: '',
-			description: '',
-			category: '',
-			basePrice: '',
-			sizes: [],
-			extraIngredientPrices: [],})
+			setFormData({
+				image: '',
+				name: '',
+				description: '',
+				category: '',
+				basePrice: '',
+				sizes: [],
+				extraIngredientPrices: [],
+			})
 			console.log(data)
 		} catch (error) {
 			console.error('Error creating menu item:', error)
 		}
 	}
-	const sizeExtras = extraPrices.filter(extraPrice => extraPrice.display === "Size");
-    const ItemExtras = extraPrices.filter(extraPrice => extraPrice.display === "Ingredient");
+	const sizeExtras = extraPrices.filter(
+		(extraPrice) => extraPrice.display === 'Size'
+	)
+	const ItemExtras = extraPrices.filter(
+		(extraPrice) => extraPrice.display === 'Ingredient'
+	)
 
 	return (
 		<div className="admin-create-menu-container">
 			<h2>Create Menu Item</h2>
-			<Form onSubmit={handleSubmit} className='admin-create-menu-form'>
+			<Form onSubmit={handleSubmit} className="admin-create-menu-form">
 				<Form.Group className="mb-3">
 					<Form.Label>Image:</Form.Label>
 					<Form.Control
@@ -197,7 +212,6 @@ function CreateMenuItem() {
 				<Form.Group className="mb-3">
 					<Form.Label>Sizes:</Form.Label>
 					<MultiSelect
-						
 						options={sizeExtras.map((extraPrice) => ({
 							label: `Name : ${extraPrice.name}    ||  Price :  ${extraPrice.price}`,
 							value: extraPrice._id,
@@ -206,7 +220,6 @@ function CreateMenuItem() {
 						onChange={handleSizeChange}
 						labelledBy="Select Sizes"
 						hasSelectAll={false}
-						
 					/>
 				</Form.Group>
 

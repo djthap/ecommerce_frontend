@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation ,useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js'
 import 'react-toastify/dist/ReactToastify.css'
 import '../css/CheckoutPage.css'
 
-function CheckoutPage({loading,setloading}) {
+function CheckoutPage({ loading, setloading }) {
 	const navigate = useNavigate()
-	
+
 	const [shippingInfo, setShippingInfo] = useState({
 		phoneNumber: '',
 		address: '',
 		cardHolderName: '',
 		cardNumber: '',
-		email:"",
+		email: '',
 		cvv: '',
 		expiryDate: '',
 	})
 	const [cartItems, setCartItems] = useState([])
-	const [paymentMethod, setPaymentMethod] = useState('pickup'); 
-  
+	const [paymentMethod, setPaymentMethod] = useState('pickup')
+
 	useEffect(() => {
 		const storedCart = JSON.parse(sessionStorage.getItem('cart')) || []
 		setCartItems(storedCart)
 		redirect()
 	}, [])
-	const redirect =()=>{
-
+	const redirect = () => {
 		if (!sessionStorage.getItem('token')) {
 			return navigate('/login', { replace: true })
 		}
@@ -53,77 +52,84 @@ function CheckoutPage({loading,setloading}) {
 	const handleChange = (e) => {
 		const { name, value } = e.target
 		setShippingInfo({ ...shippingInfo, [name]: value })
-
-		
 	}
 	const makePayment = async () => {
-        const stripe = await loadStripe("pk_test_51P0TTMFCUOELksMnK6njO4OglZ1mU339uPGGLTedpRptmfPpONsuue2TFTdA6vdlGst0WWZGoxmsUaU679A0xHAB000LIeto2d");
-        const body = {
-            products: cartItems
-        };
-        const headers = {
-            "Content-Type": "application/json",
-        };
-        const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/create-checkout-session/', {
-            method: "POST",
-            headers: headers,
-            body: JSON.stringify(body)
-        });
-        const session = await response.json();
-        console.log(session);
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id
-        });
-    };
+		const stripe = await loadStripe(
+			'pk_test_51P0TTMFCUOELksMnK6njO4OglZ1mU339uPGGLTedpRptmfPpONsuue2TFTdA6vdlGst0WWZGoxmsUaU679A0xHAB000LIeto2d'
+		)
+		const body = {
+			products: cartItems,
+		}
+		const headers = {
+			'Content-Type': 'application/json',
+		}
+		const response = await fetch(
+			'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/create-checkout-session/',
+			{
+				method: 'POST',
+				headers: headers,
+				body: JSON.stringify(body),
+			}
+		)
+		const session = await response.json()
+		console.log(session)
+		const result = await stripe.redirectToCheckout({
+			sessionId: session.id,
+		})
+	}
 	const handleSubmit = async (e) => {
-        e.preventDefault();
+		e.preventDefault()
 
-        try {
-            if (paymentMethod === 'pickup') {
-                // Place order logic for pickup
-                const response = await fetch('https://ecommerce-backend-1-cl9h.onrender.com/api/orderRoutes/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `${sessionStorage.getItem('token')}`,
-                    },
-                    body: JSON.stringify({
-                        phoneNumber: shippingInfo.phoneNumber,
-						email: shippingInfo.email,
-                        cardHolderName: shippingInfo.cardHolderName,
-                        address: shippingInfo.address,
-                        items: cartItems.map((item) => item.product._id),
-                        totalPrice: totalPrice,
-                    }),
-                });
+		try {
+			if (paymentMethod === 'pickup') {
+				// Place order logic for pickup
+				const response = await fetch(
+					'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/',
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							Authorization: `${sessionStorage.getItem('token')}`,
+						},
+						body: JSON.stringify({
+							phoneNumber: shippingInfo.phoneNumber,
+							email: shippingInfo.email,
+							cardHolderName: shippingInfo.cardHolderName,
+							address: shippingInfo.address,
+							items: cartItems.map((item) => item.product._id),
+							totalPrice: totalPrice,
+						}),
+					}
+				)
 
-                if (!response.ok) {
-                    throw new Error('Failed to place order');
-                }
+				if (!response.ok) {
+					throw new Error('Failed to place order')
+				}
 
-                console.log('order placed successfully');
-                setCartItems([]);
-                setloading("0");
-                setShippingInfo({
-                    phoneNumber: '',
-                    address: '',
-                });
-                sessionStorage.removeItem('cart');
-                toast.success('Order placed successfully');
-            } else if (paymentMethod === 'online') {
-                // Save details with product in session
-                sessionStorage.setItem('pendingCheckout', JSON.stringify({ shippingInfo, cartItems }));
+				console.log('order placed successfully')
+				setCartItems([])
+				setloading('0')
+				setShippingInfo({
+					phoneNumber: '',
+					address: '',
+				})
+				sessionStorage.removeItem('cart')
+				toast.success('Order placed successfully')
+			} else if (paymentMethod === 'online') {
+				// Save details with product in session
+				sessionStorage.setItem(
+					'pendingCheckout',
+					JSON.stringify({ shippingInfo, cartItems })
+				)
 
-                // Run makePayment function
-                await makePayment();
-            }
-        } catch (error) {
-            console.error('Error placing order:', error);
-            toast.error('Failed to place order');
-        }
-    };
-
-	
+				// Run makePayment function
+				await makePayment()
+			}
+		} catch (error) {
+			console.error('Error placing order:', error)
+			toast.error('Failed to place order')
+		}
+	}
 
 	return (
 		<div>
@@ -216,14 +222,14 @@ function CheckoutPage({loading,setloading}) {
 								Shipping Address
 							</h2>
 							<input
-                                        type="text"
-                                        name="cardHolderName"
-                                        placeholder=" Name"
-                                        value={shippingInfo.cardHolderName}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                  
+								type="text"
+								name="cardHolderName"
+								placeholder=" Name"
+								value={shippingInfo.cardHolderName}
+								onChange={handleChange}
+								required
+							/>
+
 							<input
 								type="text"
 								name="phoneNumber"
@@ -234,14 +240,14 @@ function CheckoutPage({loading,setloading}) {
 								maxLength={10}
 								required
 							/>
-							 <input
-                                type="email"
-                                name="email"
-                                placeholder="Email"
-                                value={shippingInfo.email}
-                                onChange={handleChange}
-                                required
-                            />
+							<input
+								type="email"
+								name="email"
+								placeholder="Email"
+								value={shippingInfo.email}
+								onChange={handleChange}
+								required
+							/>
 							<input
 								type="text"
 								name="address"
@@ -251,32 +257,33 @@ function CheckoutPage({loading,setloading}) {
 								required
 							/>
 
-                                   
-                               
-<div>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="paymentMethod"
-                                        value="pickup"
-                                        checked={paymentMethod === 'pickup'}
-                                        onChange={() => setPaymentMethod('pickup')}
-                                    />
-                                    Pick up
-                                </label>
-                                <label>
-                                    <input
-                                        type="radio"
-                                        name="paymentMethod"
-                                        value="online"
-                                        checked={paymentMethod === 'online'}
-                                        onChange={() => setPaymentMethod('online')}
-                                    />
-                                    Online
-                                </label>
-                            </div>
-							
-						
+							<div>
+								<label>
+									<input
+										type="radio"
+										name="paymentMethod"
+										value="pickup"
+										checked={paymentMethod === 'pickup'}
+										onChange={() =>
+											setPaymentMethod('pickup')
+										}
+									/>
+									Pick up
+								</label>
+								<label>
+									<input
+										type="radio"
+										name="paymentMethod"
+										value="online"
+										checked={paymentMethod === 'online'}
+										onChange={() =>
+											setPaymentMethod('online')
+										}
+									/>
+									Online
+								</label>
+							</div>
+
 							<button
 								type="submit"
 								className="place-order-button"
