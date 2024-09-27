@@ -22,7 +22,7 @@ function ExtraPrice() {
 	const fetchExtraPrices = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice'
+				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
@@ -50,7 +50,7 @@ function ExtraPrice() {
 	const handleEditSubmit = async (id) => {
 		try {
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice/${id}`,
+				`https://ecommerce-backend-o1vw.onrender.com/api/extraPrice/${id}`,
 				{
 					method: 'PUT',
 					headers: {
@@ -79,7 +79,7 @@ function ExtraPrice() {
 			}
 
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice/${id}`,
+				`https://ecommerce-backend-o1vw.onrender.com/api/extraPrice/${id}`,
 				{
 					method: 'DELETE',
 				}
@@ -99,7 +99,7 @@ function ExtraPrice() {
 		e.preventDefault()
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice',
+				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice',
 				{
 					method: 'POST',
 					headers: {

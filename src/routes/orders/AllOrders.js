@@ -15,7 +15,7 @@ function AllOrders() {
 	const fetchOrders = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes'
+				'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch orders')
@@ -33,7 +33,7 @@ function AllOrders() {
 	const updateOrderStatus = async (orderId, status) => {
 		try {
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/${orderId}/status`,
+				`https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/${orderId}/status`,
 				{
 					method: 'PUT',
 					headers: {

@@ -64,7 +64,7 @@ function CheckoutPage({ loading, setloading }) {
 			'Content-Type': 'application/json',
 		}
 		const response = await fetch(
-			'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/create-checkout-session/',
+			'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/create-checkout-session/',
 			{
 				method: 'POST',
 				headers: headers,
@@ -84,7 +84,7 @@ function CheckoutPage({ loading, setloading }) {
 			if (paymentMethod === 'pickup') {
 				// Place order logic for pickup
 				const response = await fetch(
-					'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/',
+					'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/',
 					{
 						method: 'POST',
 						headers: {

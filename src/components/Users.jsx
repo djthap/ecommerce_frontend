@@ -19,7 +19,7 @@ function Users() {
 	const fetchUsers = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/getAllUsers'
+				'https://ecommerce-backend-o1vw.onrender.com/api/auth/getAllUsers'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch users')
@@ -52,7 +52,7 @@ function Users() {
 		const newRole = event.target.value
 		try {
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/auth/editRole/${selectedUser._id}`,
+				`https://ecommerce-backend-o1vw.onrender.com/api/auth/editRole/${selectedUser._id}`,
 				{
 					method: 'PUT',
 					headers: {

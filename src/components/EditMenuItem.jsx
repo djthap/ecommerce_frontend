@@ -32,7 +32,7 @@ function EditMenuItem() {
 	const fetchMenuItem = async () => {
 		try {
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/${id}`
+				`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${id}`
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch menu item')
@@ -59,7 +59,7 @@ function EditMenuItem() {
 	const fetchCategories = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/categories'
+				'https://ecommerce-backend-o1vw.onrender.com/api/categories'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
@@ -74,7 +74,7 @@ function EditMenuItem() {
 	const fetchExtraPrices = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice'
+				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
@@ -119,7 +119,7 @@ function EditMenuItem() {
 		e.preventDefault()
 		try {
 			const response = await fetch(
-				`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/${id}`,
+				`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${id}`,
 				{
 					method: 'PUT',
 					headers: {

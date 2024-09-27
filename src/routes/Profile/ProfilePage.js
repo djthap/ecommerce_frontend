@@ -49,7 +49,7 @@ const ProfilePage = () => {
 		if (Object.keys(validationErrors).length === 0) {
 			try {
 				const response = await fetch(
-					`https://ecommercebackend-production-8c9e.up.railway.app/api/auth/updateProfile/${user._id}`,
+					`https://ecommerce-backend-o1vw.onrender.com/api/auth/updateProfile/${user._id}`,
 					{
 						method: 'PUT',
 						headers: {
@@ -100,7 +100,7 @@ const ProfilePage = () => {
 			formData.append('image', file)
 
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/uploadImage',
+				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem/uploadImage',
 				{
 					method: 'POST',
 					body: formData,

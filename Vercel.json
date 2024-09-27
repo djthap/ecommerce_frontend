@@ -1,12 +1,12 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/:path*",
-        "destination": "https://ecommercebackend-production-8c9e.up.railway.app/:path*"
-      },
-      {
-        "source": "/api/:path*/",
-        "destination": "https://ecommercebackend-production-8c9e.up.railway.app/:path*/"
-      }
-    ]
-  }
+	"rewrites": [
+		{
+			"source": "/api/:path*",
+			"destination": "https://ecommerce-backend-o1vw.onrender.com/:path*"
+		},
+		{
+			"source": "/api/:path*/",
+			"destination": "https://ecommerce-backend-o1vw.onrender.com/:path*/"
+		}
+	]
+}

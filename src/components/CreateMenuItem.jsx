@@ -27,7 +27,7 @@ function CreateMenuItem() {
 	const fetchCategories = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/categories'
+				'https://ecommerce-backend-o1vw.onrender.com/api/categories'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
@@ -42,7 +42,7 @@ function CreateMenuItem() {
 	const fetchExtraPrices = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/extraPrice'
+				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
@@ -70,7 +70,7 @@ function CreateMenuItem() {
 			formData.append('image', file)
 
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/uploadImage',
+				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem/uploadImage',
 				{
 					method: 'POST',
 					body: formData,
@@ -111,7 +111,7 @@ function CreateMenuItem() {
 		e.preventDefault()
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem',
+				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem',
 				{
 					method: 'POST',
 					headers: {

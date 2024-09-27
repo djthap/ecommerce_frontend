@@ -41,7 +41,7 @@ function Test({ loading, setloading }) {
 			'Content-Type': 'application/json',
 		}
 		const response = await fetch(
-			'https://ecommercebackend-production-8c9e.up.railway.app/api/orderRoutes/create-checkout-session/',
+			'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/create-checkout-session/',
 			{
 				method: 'POST',
 				headers: headers,

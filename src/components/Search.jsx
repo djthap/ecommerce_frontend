@@ -14,7 +14,7 @@ function Search() {
 		const fetchSearchResults = async () => {
 			try {
 				const response = await fetch(
-					`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/search?name=${searchQuery}`
+					`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/search?name=${searchQuery}`
 				)
 				if (!response.ok) {
 					throw new Error('Failed to fetch search results')

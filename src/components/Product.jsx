@@ -13,9 +13,7 @@ function Product({ loading, setloading }) {
 	const { id } = useParams()
 
 	useEffect(() => {
-		fetch(
-			`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/${id}`
-		)
+		fetch(`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${id}`)
 			.then((response) => response.json())
 			.then((data) => setProduct(data))
 			.catch((error) => console.error('Error fetching product:', error))

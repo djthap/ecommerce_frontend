@@ -11,7 +11,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 
 	useEffect(() => {
 		fetch(
-			`https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem/${productId}`
+			`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${productId}`
 		)
 			.then((response) => response.json())
 			.then((data) => setProduct(data))

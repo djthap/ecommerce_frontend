@@ -12,7 +12,7 @@ function ManageMenuItems() {
 	const fetchMenuItems = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/menuItem'
+				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem'
 			)
 			if (!response.ok) {
 				throw new Error('Failed to fetch menu items')

@@ -21,7 +21,7 @@ export default function SignUp() {
 			}
 
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/register',
+				'https://ecommerce-backend-o1vw.onrender.com/api/auth/register',
 				{
 					method: 'POST',
 					headers: {

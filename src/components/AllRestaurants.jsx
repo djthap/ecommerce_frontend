@@ -9,7 +9,7 @@ export default function AllRestaurants() {
 		const fetchRestaurantUsers = async () => {
 			try {
 				const response = await fetch(
-					'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/restaurants'
+					'https://ecommerce-backend-o1vw.onrender.com/api/auth/restaurants'
 				)
 				if (!response.ok) {
 					throw new Error('Failed to fetch restaurant users')

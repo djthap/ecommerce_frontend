@@ -20,7 +20,7 @@ function AdminLoginPage({ loading, setloading }) {
 		setLoginInProgress(true)
 		try {
 			const response = await fetch(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/auth/admin/login',
+				'https://ecommerce-backend-o1vw.onrender.com/api/auth/admin/login',
 				{
 					method: 'POST',
 					headers: {

@@ -13,7 +13,7 @@ export default function ContactUsPage() {
 		e.preventDefault()
 		try {
 			await axios.post(
-				'https://ecommercebackend-production-8c9e.up.railway.app/api/contactUsRoutes/send-email',
+				'https://ecommerce-backend-o1vw.onrender.com/api/contactUsRoutes/send-email',
 				{
 					name,
 					email,
