@@ -12,7 +12,7 @@ export default function HomePage() {
 	const fetchTopThreeProducts = async () => {
 		try {
 			const response = await fetch(
-				'http://localhost:5002/api/menuItem/top3',
+				'https://localhost:5002/api/menuItem/top3',
 				{
 					headers: {
 						Accept: '*',
