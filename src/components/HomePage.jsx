@@ -12,24 +12,14 @@ export default function HomePage() {
 	const fetchTopThreeProducts = async () => {
 		try {
 			const response = await fetch(
-				'https://localhost:5002/api/menuItem/top3',
+				'http://localhost:5002/api/menuItem/top3',
 				{
 					headers: {
 						Accept: '*',
 						'Access-Control-Allow-Origin': '*',
-						'Access-Control-Allow-Headers':
-							'Origin, X-Requested-With, Content-Type, Accept',
-						'Access-Control-Allow-Methods':
-							'GET, POST, PUT, DELETE, OPTIONS',
-						'User-Agent':
-							'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36',
-					},
+						},
 					method: 'GET',
-					mode: 'cors',
-					credentials: 'include',
-					cache: 'default',
-					redirect: 'follow',
-					referrer: 'client',
+				
 				}
 			)
 			if (!response.ok) {
