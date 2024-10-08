@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../css/Home.css'
 import ProductLayout from './ProductLayout'
+import axios from 'axios';
 
 export default function HomePage() {
 	const [products, setProducts] = useState([])
@@ -10,27 +11,19 @@ export default function HomePage() {
 	}, [])
 
 	const fetchTopThreeProducts = async () => {
-		try {
-			const response = await fetch(
-				'http://localhost:5002/api/menuItem/top3',
-				{
-					headers: {
-						Accept: '*',
-						'Access-Control-Allow-Origin': '*',
-						},
-					method: 'GET',
-				
-				}
-			)
-			if (!response.ok) {
-				throw new Error('Failed to fetch top three products')
-			}
-			const data = await response.json()
-			setProducts(data)
-		} catch (error) {
-			console.error('Error fetching top three products:', error)
-		}
-	}
+        try {
+            const response = await axios.get('http://localhost:5002/api/menuItem/top3', {
+                headers: {
+                    Accept: 'application/json', // Correct content type for the request
+                },
+            });
+            
+            // Axios automatically parses JSON, no need for response.json()
+            setProducts(response.data); // Assuming setProducts is a state setter
+        } catch (error) {
+            console.error('Error fetching top three products:', error);
+        }
+    };
 	return (
 		<section>
 			<section className="home-container">
