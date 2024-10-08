@@ -26,9 +26,7 @@ function CreateMenuItem() {
 
 	const fetchCategories = async () => {
 		try {
-			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/categories'
-			)
+			const response = await fetch('http://localhost:5002/api/categories')
 			if (!response.ok) {
 				throw new Error('Failed to fetch categories')
 			}
@@ -41,9 +39,7 @@ function CreateMenuItem() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice'
-			)
+			const response = await fetch('http://localhost:5002/api/extraPrice')
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -70,7 +66,7 @@ function CreateMenuItem() {
 			formData.append('image', file)
 
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem/uploadImage',
+				'http://localhost:5002/api/menuItem/uploadImage',
 				{
 					method: 'POST',
 					body: formData,
@@ -110,17 +106,14 @@ function CreateMenuItem() {
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		try {
-			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem',
-				{
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						Authorization: `${sessionStorage.getItem('token')}`,
-					},
-					body: JSON.stringify(formData),
-				}
-			)
+			const response = await fetch('http://localhost:5002/api/menuItem', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `${sessionStorage.getItem('token')}`,
+				},
+				body: JSON.stringify(formData),
+			})
 
 			if (!response.ok) {
 				throw new Error('Failed to create menu item')

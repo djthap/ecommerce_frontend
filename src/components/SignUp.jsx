@@ -21,7 +21,7 @@ export default function SignUp() {
 			}
 
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/auth/register',
+				'http://localhost:5002/api/auth/register',
 				{
 					method: 'POST',
 					headers: {

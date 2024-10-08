@@ -13,7 +13,7 @@ function MenuItemCard({ menuItem, onEdit, onDelete }) {
 			}
 
 			const response = await fetch(
-				`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${id}`,
+				`http://localhost:5002/api/menuItem/${id}`,
 				{
 					method: 'DELETE',
 				}

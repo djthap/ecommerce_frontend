@@ -24,7 +24,7 @@ function LoginPage({ setRedirectTo, loading, setloading }) {
 		setLoginInProgress(true)
 		try {
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/auth/login',
+				'http://localhost:5002/api/auth/login',
 				{
 					method: 'POST',
 					headers: {

@@ -21,9 +21,7 @@ function ExtraPrice() {
 
 	const fetchExtraPrices = async () => {
 		try {
-			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice'
-			)
+			const response = await fetch('http://localhost:5002/api/extraPrice')
 			if (!response.ok) {
 				throw new Error('Failed to fetch extra prices')
 			}
@@ -50,7 +48,7 @@ function ExtraPrice() {
 	const handleEditSubmit = async (id) => {
 		try {
 			const response = await fetch(
-				`https://ecommerce-backend-o1vw.onrender.com/api/extraPrice/${id}`,
+				`http://localhost:5002/api/extraPrice/${id}`,
 				{
 					method: 'PUT',
 					headers: {
@@ -79,7 +77,7 @@ function ExtraPrice() {
 			}
 
 			const response = await fetch(
-				`https://ecommerce-backend-o1vw.onrender.com/api/extraPrice/${id}`,
+				`http://localhost:5002/api/extraPrice/${id}`,
 				{
 					method: 'DELETE',
 				}
@@ -99,7 +97,7 @@ function ExtraPrice() {
 		e.preventDefault()
 		try {
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/extraPrice',
+				'http://localhost:5002/api/extraPrice',
 				{
 					method: 'POST',
 					headers: {

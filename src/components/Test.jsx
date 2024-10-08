@@ -41,7 +41,7 @@ function Test({ loading, setloading }) {
 			'Content-Type': 'application/json',
 		}
 		const response = await fetch(
-			'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/create-checkout-session/',
+			'http://localhost:5002/api/orderRoutes/create-checkout-session/',
 			{
 				method: 'POST',
 				headers: headers,

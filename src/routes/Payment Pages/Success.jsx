@@ -58,7 +58,7 @@ const Success = () => {
 		try {
 			sessionStorage.removeItem('cart')
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/orderRoutes/',
+				'http://localhost:5002/api/orderRoutes/',
 				{
 					method: 'POST',
 					headers: {

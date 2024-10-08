@@ -12,7 +12,7 @@ export default function HomePage() {
 	const fetchTopThreeProducts = async () => {
 		try {
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem/top3',
+				'http://localhost:5002/api/menuItem/top3',
 				{
 					headers: {
 						Accept: '*',

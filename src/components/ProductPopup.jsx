@@ -10,9 +10,7 @@ function ProductPopup({ productId, onClose, loading, setloading }) {
 	const [quantity, setQuantity] = useState(1)
 
 	useEffect(() => {
-		fetch(
-			`https://ecommerce-backend-o1vw.onrender.com/api/menuItem/${productId}`
-		)
+		fetch(`http://localhost:5002/api/menuItem/${productId}`)
 			.then((response) => response.json())
 			.then((data) => setProduct(data))
 			.catch((error) => console.error('Error fetching product:', error))

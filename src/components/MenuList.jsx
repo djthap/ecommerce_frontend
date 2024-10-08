@@ -14,9 +14,9 @@ function MenuList({ loading, setloading, restaurant }) {
 
 	const fetchMenuItems = async (categoryId = '') => {
 		try {
-			let url = 'https://ecommerce-backend-o1vw.onrender.com/api/menuItem'
+			let url = 'http://localhost:5002/api/menuItem'
 			if (categoryId) {
-				url = `https://ecommerce-backend-o1vw.onrender.com/api/menuItem/category/${categoryId}`
+				url = `http://localhost:5002/api/menuItem/category/${categoryId}`
 			}
 			const response = await fetch(url)
 			if (!response.ok) {

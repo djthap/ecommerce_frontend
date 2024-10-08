@@ -20,7 +20,7 @@ function AdminLoginPage({ loading, setloading }) {
 		setLoginInProgress(true)
 		try {
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/auth/admin/login',
+				'http://localhost:5002/api/auth/admin/login',
 				{
 					method: 'POST',
 					headers: {

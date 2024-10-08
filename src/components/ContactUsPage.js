@@ -13,7 +13,7 @@ export default function ContactUsPage() {
 		e.preventDefault()
 		try {
 			await axios.post(
-				'https://ecommerce-backend-o1vw.onrender.com/api/contactUsRoutes/send-email',
+				'http://localhost:5002/api/contactUsRoutes/send-email',
 				{
 					name,
 					email,

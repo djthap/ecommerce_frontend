@@ -49,7 +49,7 @@ const ProfilePage = () => {
 		if (Object.keys(validationErrors).length === 0) {
 			try {
 				const response = await fetch(
-					`https://ecommerce-backend-o1vw.onrender.com/api/auth/updateProfile/${user._id}`,
+					`http://localhost:5002/api/auth/updateProfile/${user._id}`,
 					{
 						method: 'PUT',
 						headers: {
@@ -100,7 +100,7 @@ const ProfilePage = () => {
 			formData.append('image', file)
 
 			const response = await fetch(
-				'https://ecommerce-backend-o1vw.onrender.com/api/menuItem/uploadImage',
+				'http://localhost:5002/api/menuItem/uploadImage',
 				{
 					method: 'POST',
 					body: formData,
